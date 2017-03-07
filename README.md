@@ -1,6 +1,6 @@
 #MMImagePicker
 
- 图片选择器
+简单的图片选择器，可以选择原图和预览，使用很便捷。
 
 ![MMImagePicker](MMImagePicker.gif)
 
@@ -24,16 +24,16 @@
   代理：
 
 ```objc
- #pragma mark - 代理
- - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
- {
-     NSLog(@"%@",info);
- }
+  #pragma mark - 代理
+  - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+  {
+      NSLog(@"%@",info);
+  }
 
- - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
- {
-     NSLog(@"取消");
- }
+  - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
+  {
+      NSLog(@"取消");
+  }
 ```
 
 ###License
