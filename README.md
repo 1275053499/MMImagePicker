@@ -1,48 +1,40 @@
-#WZMarqueeView
+#MMImagePicker
 
-WZMarqueeView is a marquee view used on iOS.It is a view expansion which contains a `lable`.We can custom the animation duration by setting the `duration` variable,The default `duration` value is `5.0f`.
+ 图片选择器
 
+![MMImagePicker](MMImagePicker.gif)
 
-![WZMarqueeView](WZMarqueeView.gif)
+###使用方式
 
-
-#Getting Started
-
-**Using [CocoaPods](http://cocoapods.org)**
-
- 1.Add the pod `WZMarqueeView` to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html).
-```ruby
-pod 'WZMarqueeView', '~> 2.0.0'
-```
- 2.Run `pod install` from Terminal, then open your app's `.xcworkspace` file to launch Xcode.
- 
- 3.`#import WZMarqueeView.h` wherever you want to use the API.
-
-**Manually from GitHub**
-
-1.Download the `WZMarqueeView.h` and `WZMarqueeView.m` files in th [Source directory](https://github.com/wangzz/WZMarqueeView/tree/master/WZMarqueeView)
-
-2.Add both files to your Xcode project.
-
-3.`#import WZMarqueeView.h` wherever you want to use the API.
-
-#Example Usage
-
-**Example location**
-
-Check out the [example project](https://github.com/wangzz/WZMarqueeView/tree/master/WZMarqueeViewDemo) included in the repository. It contains a few demos of the API in use for various scenarios. 
-
-**Usage**
-
-The way to create a WZMarqueeView is:
+ 下载本demo，将demo中的'MMImagePicker'文件夹，添加到自己的项目，引入头文件和代理，具体使用参考如下：
 
 ```objc
-WZMarqueeView *marqueeView = [[WZMarqueeView alloc] initWithFrame:CGRectMake(60, 100, 200, 40)];
-marqueeView.lable.text = @"Good good study day day up.It is a WZMarqueeView demo";
-marqueeView.duration = 7.0f;
-marqueeView.backgroundColor = [UIColor whiteColor];
-[marqueeView showInView:self.view];
+  MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
+  mmVC.delegate = self; //代理
+  mmVC.mainColor = [UIColor blueColor]; //主色调
+  mmVC.maximumNumberOfImage = 9; //最大选择数目
+
+  UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
+  [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
+  mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  mmNav.navigationBar.tintColor = [UIColor whiteColor];
+  [self.navigationController presentViewController:mmNav animated:YES completion:nil];
 ```
 
-#License
+  代理：
+
+```objc
+ #pragma mark - 代理
+ - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+ {
+     NSLog(@"%@",info);
+ }
+
+ - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
+ {
+     NSLog(@"取消");
+ }
+```
+
+###License
 MIT

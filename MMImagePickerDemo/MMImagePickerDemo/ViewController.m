@@ -33,7 +33,7 @@
 - (void)btClicked
 {
     MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
-    mmVC.delegate = self;
+    mmVC.delegate = self;  
     
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];

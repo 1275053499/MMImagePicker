@@ -120,8 +120,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MMImagePickerController *imagePicker = [[MMImagePickerController alloc] init];
-    imagePicker.delegate = self.delegate;
     imagePicker.assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
+    imagePicker.delegate = self.delegate;
+    imagePicker.mainColor = self.mainColor;
+    imagePicker.maximumNumberOfImage = self.maximumNumberOfImage;
     [self.navigationController pushViewController:imagePicker animated:YES];
 }
 
