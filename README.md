@@ -1,40 +1,53 @@
 #MMImagePicker
 
-简单的图片选择器，可以选择原图和预览，使用很便捷。
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/dexianyinjiu/MMImagePicker/master/LICENSE)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/v/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/p/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
+
+##使用
 
 ![MMImagePicker](MMImagePicker.gif)
 
-###使用方式
+####方式一：
+1. `pod 'MMImagePicker', '~> 1.2'`;
+2. `pod install` / `pod update`;
+3. `#import <MMImagePicker/MMAlbumPickerController.h>`.
 
- 下载本demo，将demo中的'MMImagePicker'文件夹，添加到自己的项目，引入头文件和代理，具体使用参考如下：
+####方式二：
 
-```objc
-  MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
-  mmVC.delegate = self; //代理
-  mmVC.mainColor = [UIColor blueColor]; //主色调
-  mmVC.maximumNumberOfImage = 9; //最大选择数目
+1. 下载`MMImagePicker`文件夹，添加到自己的项目中；
+2. `#import "MMAlbumPickerController.h"`.
 
-  UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
-  [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
-  mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
-  mmNav.navigationBar.tintColor = [UIColor whiteColor];
-  [self.navigationController presentViewController:mmNav animated:YES completion:nil];
-```
-
-  代理：
+具体使用，参考如下：
 
 ```objc
-  #pragma mark - 代理
-  - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
-  {
-      NSLog(@"%@",info);
-  }
+MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
+mmVC.delegate = self; //代理
+mmVC.mainColor = [UIColor blueColor]; //主色调
+mmVC.maximumNumberOfImage = 9; //最大选择数目
 
-  - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
-  {
-      NSLog(@"取消");
-  }
+UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
+[mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
+mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
+mmNav.navigationBar.tintColor = [UIColor whiteColor];
+[self.navigationController presentViewController:mmNav animated:YES completion:nil];
 ```
 
-###License
-MIT
+代理：
+
+```objc
+#pragma mark - 代理
+- (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
+     NSLog(@"%@",info);
+}
+
+ - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
+{
+     NSLog(@"取消");
+}
+```
+#要求
+`iOS 7.0+ `
+`Xcode 7.0+`.
+

@@ -7,159 +7,118 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B2AD2251E696FB90071CDA0 /* default_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AD2241E696FB90071CDA0 /* default_bar@2x.png */; };
-		8B3AE4231E6E46CB001B8D3A /* MMAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4101E6E46CB001B8D3A /* MMAlbumCell.m */; };
-		8B3AE4241E6E46CB001B8D3A /* MMAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4121E6E46CB001B8D3A /* MMAlbumPickerController.m */; };
-		8B3AE4251E6E46CB001B8D3A /* MMAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4141E6E46CB001B8D3A /* MMAssetCell.m */; };
-		8B3AE4261E6E46CB001B8D3A /* MMBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4161E6E46CB001B8D3A /* MMBarButtonItem.m */; };
-		8B3AE4271E6E46CB001B8D3A /* MMImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4181E6E46CB001B8D3A /* MMImagePickerController.m */; };
-		8B3AE4281E6E46CB001B8D3A /* MMImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE41A1E6E46CB001B8D3A /* MMImagePreviewController.m */; };
-		8B3AE4291E6E46CB001B8D3A /* mmphoto_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3AE41C1E6E46CB001B8D3A /* mmphoto_back@2x.png */; };
-		8B3AE42A1E6E46CB001B8D3A /* mmphoto_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3AE41D1E6E46CB001B8D3A /* mmphoto_delete@2x.png */; };
-		8B3AE42B1E6E46CB001B8D3A /* mmphoto_mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3AE41E1E6E46CB001B8D3A /* mmphoto_mark@2x.png */; };
-		8B3AE42C1E6E46CB001B8D3A /* mmphoto_marked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3AE41F1E6E46CB001B8D3A /* mmphoto_marked@2x.png */; };
-		8B3AE42D1E6E46CB001B8D3A /* mmphoto_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3AE4201E6E46CB001B8D3A /* mmphoto_overlay@2x.png */; };
-		8B3AE42E1E6E46CB001B8D3A /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3AE4221E6E46CB001B8D3A /* UIView+Geometry.m */; };
-		8B9F64C51E695D55005FEA98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F64C41E695D55005FEA98 /* main.m */; };
-		8B9F64C81E695D55005FEA98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F64C71E695D55005FEA98 /* AppDelegate.m */; };
-		8B9F64CB1E695D55005FEA98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F64CA1E695D55005FEA98 /* ViewController.m */; };
-		8B9F64CE1E695D55005FEA98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9F64CC1E695D55005FEA98 /* Main.storyboard */; };
-		8B9F64D01E695D55005FEA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B9F64CF1E695D55005FEA98 /* Assets.xcassets */; };
-		8B9F64D31E695D55005FEA98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9F64D11E695D55005FEA98 /* LaunchScreen.storyboard */; };
+		7F298B9D39190205D0AC1084 /* libPods-MMImagePickerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B04E222FC652C4AF1ED004F6 /* libPods-MMImagePickerDemo.a */; };
+		8B9825161E74201C00C2D104 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9825151E74201C00C2D104 /* main.m */; };
+		8B9825191E74201C00C2D104 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9825181E74201C00C2D104 /* AppDelegate.m */; };
+		8B98251C1E74201C00C2D104 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98251B1E74201C00C2D104 /* ViewController.m */; };
+		8B98251F1E74201C00C2D104 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B98251D1E74201C00C2D104 /* Main.storyboard */; };
+		8B9825211E74201C00C2D104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B9825201E74201C00C2D104 /* Assets.xcassets */; };
+		8B9825241E74201C00C2D104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B9825221E74201C00C2D104 /* LaunchScreen.storyboard */; };
+		8B98252C1E74205000C2D104 /* default_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98252B1E74205000C2D104 /* default_bar@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B2AD2241E696FB90071CDA0 /* default_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_bar@2x.png"; sourceTree = "<group>"; };
-		8B3AE40F1E6E46CB001B8D3A /* MMAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAlbumCell.h; sourceTree = "<group>"; };
-		8B3AE4101E6E46CB001B8D3A /* MMAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAlbumCell.m; sourceTree = "<group>"; };
-		8B3AE4111E6E46CB001B8D3A /* MMAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAlbumPickerController.h; sourceTree = "<group>"; };
-		8B3AE4121E6E46CB001B8D3A /* MMAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAlbumPickerController.m; sourceTree = "<group>"; };
-		8B3AE4131E6E46CB001B8D3A /* MMAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAssetCell.h; sourceTree = "<group>"; };
-		8B3AE4141E6E46CB001B8D3A /* MMAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAssetCell.m; sourceTree = "<group>"; };
-		8B3AE4151E6E46CB001B8D3A /* MMBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBarButtonItem.h; sourceTree = "<group>"; };
-		8B3AE4161E6E46CB001B8D3A /* MMBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBarButtonItem.m; sourceTree = "<group>"; };
-		8B3AE4171E6E46CB001B8D3A /* MMImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerController.h; sourceTree = "<group>"; };
-		8B3AE4181E6E46CB001B8D3A /* MMImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePickerController.m; sourceTree = "<group>"; };
-		8B3AE4191E6E46CB001B8D3A /* MMImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewController.h; sourceTree = "<group>"; };
-		8B3AE41A1E6E46CB001B8D3A /* MMImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePreviewController.m; sourceTree = "<group>"; };
-		8B3AE41C1E6E46CB001B8D3A /* mmphoto_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_back@2x.png"; sourceTree = "<group>"; };
-		8B3AE41D1E6E46CB001B8D3A /* mmphoto_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_delete@2x.png"; sourceTree = "<group>"; };
-		8B3AE41E1E6E46CB001B8D3A /* mmphoto_mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_mark@2x.png"; sourceTree = "<group>"; };
-		8B3AE41F1E6E46CB001B8D3A /* mmphoto_marked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_marked@2x.png"; sourceTree = "<group>"; };
-		8B3AE4201E6E46CB001B8D3A /* mmphoto_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_overlay@2x.png"; sourceTree = "<group>"; };
-		8B3AE4211E6E46CB001B8D3A /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
-		8B3AE4221E6E46CB001B8D3A /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
-		8B9F64C01E695D55005FEA98 /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B9F64C41E695D55005FEA98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B9F64C61E695D55005FEA98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8B9F64C71E695D55005FEA98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8B9F64C91E695D55005FEA98 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8B9F64CA1E695D55005FEA98 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8B9F64CD1E695D55005FEA98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B9F64CF1E695D55005FEA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8B9F64D21E695D55005FEA98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8B9F64D41E695D55005FEA98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51EF2F2003E18676C185E2C9 /* Pods-MMImagePickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMImagePickerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MMImagePickerDemo/Pods-MMImagePickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8B9825111E74201C00C2D104 /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B9825151E74201C00C2D104 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B9825171E74201C00C2D104 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8B9825181E74201C00C2D104 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8B98251A1E74201C00C2D104 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8B98251B1E74201C00C2D104 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8B98251E1E74201C00C2D104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8B9825201E74201C00C2D104 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B9825231E74201C00C2D104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B9825251E74201C00C2D104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B98252B1E74205000C2D104 /* default_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_bar@2x.png"; sourceTree = "<group>"; };
+		94A07F1A0CE2ECF24B0E26F6 /* Pods-MMImagePickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMImagePickerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MMImagePickerDemo/Pods-MMImagePickerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B04E222FC652C4AF1ED004F6 /* libPods-MMImagePickerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMImagePickerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8B9F64BD1E695D55005FEA98 /* Frameworks */ = {
+		8B98250E1E74201C00C2D104 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F298B9D39190205D0AC1084 /* libPods-MMImagePickerDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B3AE40E1E6E46CB001B8D3A /* MMImagePicker */ = {
+		8B9825081E74201C00C2D104 = {
 			isa = PBXGroup;
 			children = (
-				8B3AE4111E6E46CB001B8D3A /* MMAlbumPickerController.h */,
-				8B3AE4121E6E46CB001B8D3A /* MMAlbumPickerController.m */,
-				8B3AE4171E6E46CB001B8D3A /* MMImagePickerController.h */,
-				8B3AE4181E6E46CB001B8D3A /* MMImagePickerController.m */,
-				8B3AE4191E6E46CB001B8D3A /* MMImagePreviewController.h */,
-				8B3AE41A1E6E46CB001B8D3A /* MMImagePreviewController.m */,
-				8B3AE4131E6E46CB001B8D3A /* MMAssetCell.h */,
-				8B3AE4141E6E46CB001B8D3A /* MMAssetCell.m */,
-				8B3AE40F1E6E46CB001B8D3A /* MMAlbumCell.h */,
-				8B3AE4101E6E46CB001B8D3A /* MMAlbumCell.m */,
-				8B3AE4151E6E46CB001B8D3A /* MMBarButtonItem.h */,
-				8B3AE4161E6E46CB001B8D3A /* MMBarButtonItem.m */,
-				8B3AE4211E6E46CB001B8D3A /* UIView+Geometry.h */,
-				8B3AE4221E6E46CB001B8D3A /* UIView+Geometry.m */,
-				8B3AE41B1E6E46CB001B8D3A /* Resources */,
-			);
-			name = MMImagePicker;
-			path = ../../MMImagePicker;
-			sourceTree = "<group>";
-		};
-		8B3AE41B1E6E46CB001B8D3A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8B3AE41C1E6E46CB001B8D3A /* mmphoto_back@2x.png */,
-				8B3AE41D1E6E46CB001B8D3A /* mmphoto_delete@2x.png */,
-				8B3AE41E1E6E46CB001B8D3A /* mmphoto_mark@2x.png */,
-				8B3AE41F1E6E46CB001B8D3A /* mmphoto_marked@2x.png */,
-				8B3AE4201E6E46CB001B8D3A /* mmphoto_overlay@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		8B9F64B71E695D55005FEA98 = {
-			isa = PBXGroup;
-			children = (
-				8B9F64C21E695D55005FEA98 /* MMImagePickerDemo */,
-				8B9F64C11E695D55005FEA98 /* Products */,
+				8B9825131E74201C00C2D104 /* MMImagePickerDemo */,
+				8B9825121E74201C00C2D104 /* Products */,
+				DE0F726AEB80E59E7F162856 /* Pods */,
+				9F495C80DE717BD21432D725 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		8B9F64C11E695D55005FEA98 /* Products */ = {
+		8B9825121E74201C00C2D104 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B9F64C01E695D55005FEA98 /* MMImagePickerDemo.app */,
+				8B9825111E74201C00C2D104 /* MMImagePickerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8B9F64C21E695D55005FEA98 /* MMImagePickerDemo */ = {
+		8B9825131E74201C00C2D104 /* MMImagePickerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8B3AE40E1E6E46CB001B8D3A /* MMImagePicker */,
-				8B9F64C61E695D55005FEA98 /* AppDelegate.h */,
-				8B9F64C71E695D55005FEA98 /* AppDelegate.m */,
-				8B9F64C91E695D55005FEA98 /* ViewController.h */,
-				8B9F64CA1E695D55005FEA98 /* ViewController.m */,
-				8B9F64C31E695D55005FEA98 /* Supporting Files */,
+				8B9825171E74201C00C2D104 /* AppDelegate.h */,
+				8B9825181E74201C00C2D104 /* AppDelegate.m */,
+				8B98251A1E74201C00C2D104 /* ViewController.h */,
+				8B98251B1E74201C00C2D104 /* ViewController.m */,
+				8B9825141E74201C00C2D104 /* Supporting Files */,
 			);
 			path = MMImagePickerDemo;
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
-		8B9F64C31E695D55005FEA98 /* Supporting Files */ = {
+		8B9825141E74201C00C2D104 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B2AD2241E696FB90071CDA0 /* default_bar@2x.png */,
-				8B9F64CC1E695D55005FEA98 /* Main.storyboard */,
-				8B9F64CF1E695D55005FEA98 /* Assets.xcassets */,
-				8B9F64D11E695D55005FEA98 /* LaunchScreen.storyboard */,
-				8B9F64D41E695D55005FEA98 /* Info.plist */,
-				8B9F64C41E695D55005FEA98 /* main.m */,
+				8B98252B1E74205000C2D104 /* default_bar@2x.png */,
+				8B98251D1E74201C00C2D104 /* Main.storyboard */,
+				8B9825201E74201C00C2D104 /* Assets.xcassets */,
+				8B9825221E74201C00C2D104 /* LaunchScreen.storyboard */,
+				8B9825251E74201C00C2D104 /* Info.plist */,
+				8B9825151E74201C00C2D104 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9F495C80DE717BD21432D725 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B04E222FC652C4AF1ED004F6 /* libPods-MMImagePickerDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE0F726AEB80E59E7F162856 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51EF2F2003E18676C185E2C9 /* Pods-MMImagePickerDemo.debug.xcconfig */,
+				94A07F1A0CE2ECF24B0E26F6 /* Pods-MMImagePickerDemo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B9F64BF1E695D55005FEA98 /* MMImagePickerDemo */ = {
+		8B9825101E74201C00C2D104 /* MMImagePickerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B9F64D71E695D55005FEA98 /* Build configuration list for PBXNativeTarget "MMImagePickerDemo" */;
+			buildConfigurationList = 8B9825281E74201C00C2D104 /* Build configuration list for PBXNativeTarget "MMImagePickerDemo" */;
 			buildPhases = (
-				8B9F64BC1E695D55005FEA98 /* Sources */,
-				8B9F64BD1E695D55005FEA98 /* Frameworks */,
-				8B9F64BE1E695D55005FEA98 /* Resources */,
+				CDC5940C471258BC30C50BD4 /* [CP] Check Pods Manifest.lock */,
+				8B98250D1E74201C00C2D104 /* Sources */,
+				8B98250E1E74201C00C2D104 /* Frameworks */,
+				8B98250F1E74201C00C2D104 /* Resources */,
+				96B5CE5A26EFC05B5C0B8D0A /* [CP] Embed Pods Frameworks */,
+				73F905CA4BA41C0FDC04873A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,26 +126,26 @@
 			);
 			name = MMImagePickerDemo;
 			productName = MMImagePickerDemo;
-			productReference = 8B9F64C01E695D55005FEA98 /* MMImagePickerDemo.app */;
+			productReference = 8B9825111E74201C00C2D104 /* MMImagePickerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8B9F64B81E695D55005FEA98 /* Project object */ = {
+		8B9825091E74201C00C2D104 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = LEA;
 				TargetAttributes = {
-					8B9F64BF1E695D55005FEA98 = {
+					8B9825101E74201C00C2D104 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GRSZLFFNPH;
+						DevelopmentTeam = 7NG3VCALPX;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 8B9F64BB1E695D55005FEA98 /* Build configuration list for PBXProject "MMImagePickerDemo" */;
+			buildConfigurationList = 8B98250C1E74201C00C2D104 /* Build configuration list for PBXProject "MMImagePickerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -194,68 +153,104 @@
 				en,
 				Base,
 			);
-			mainGroup = 8B9F64B71E695D55005FEA98;
-			productRefGroup = 8B9F64C11E695D55005FEA98 /* Products */;
+			mainGroup = 8B9825081E74201C00C2D104;
+			productRefGroup = 8B9825121E74201C00C2D104 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B9F64BF1E695D55005FEA98 /* MMImagePickerDemo */,
+				8B9825101E74201C00C2D104 /* MMImagePickerDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8B9F64BE1E695D55005FEA98 /* Resources */ = {
+		8B98250F1E74201C00C2D104 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B3AE42A1E6E46CB001B8D3A /* mmphoto_delete@2x.png in Resources */,
-				8B3AE42D1E6E46CB001B8D3A /* mmphoto_overlay@2x.png in Resources */,
-				8B3AE42C1E6E46CB001B8D3A /* mmphoto_marked@2x.png in Resources */,
-				8B3AE4291E6E46CB001B8D3A /* mmphoto_back@2x.png in Resources */,
-				8B9F64D31E695D55005FEA98 /* LaunchScreen.storyboard in Resources */,
-				8B9F64D01E695D55005FEA98 /* Assets.xcassets in Resources */,
-				8B9F64CE1E695D55005FEA98 /* Main.storyboard in Resources */,
-				8B2AD2251E696FB90071CDA0 /* default_bar@2x.png in Resources */,
-				8B3AE42B1E6E46CB001B8D3A /* mmphoto_mark@2x.png in Resources */,
+				8B98252C1E74205000C2D104 /* default_bar@2x.png in Resources */,
+				8B9825241E74201C00C2D104 /* LaunchScreen.storyboard in Resources */,
+				8B9825211E74201C00C2D104 /* Assets.xcassets in Resources */,
+				8B98251F1E74201C00C2D104 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		73F905CA4BA41C0FDC04873A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MMImagePickerDemo/Pods-MMImagePickerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96B5CE5A26EFC05B5C0B8D0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MMImagePickerDemo/Pods-MMImagePickerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDC5940C471258BC30C50BD4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		8B9F64BC1E695D55005FEA98 /* Sources */ = {
+		8B98250D1E74201C00C2D104 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B3AE42E1E6E46CB001B8D3A /* UIView+Geometry.m in Sources */,
-				8B9F64CB1E695D55005FEA98 /* ViewController.m in Sources */,
-				8B3AE4261E6E46CB001B8D3A /* MMBarButtonItem.m in Sources */,
-				8B3AE4241E6E46CB001B8D3A /* MMAlbumPickerController.m in Sources */,
-				8B3AE4271E6E46CB001B8D3A /* MMImagePickerController.m in Sources */,
-				8B9F64C81E695D55005FEA98 /* AppDelegate.m in Sources */,
-				8B9F64C51E695D55005FEA98 /* main.m in Sources */,
-				8B3AE4251E6E46CB001B8D3A /* MMAssetCell.m in Sources */,
-				8B3AE4231E6E46CB001B8D3A /* MMAlbumCell.m in Sources */,
-				8B3AE4281E6E46CB001B8D3A /* MMImagePreviewController.m in Sources */,
+				8B98251C1E74201C00C2D104 /* ViewController.m in Sources */,
+				8B9825191E74201C00C2D104 /* AppDelegate.m in Sources */,
+				8B9825161E74201C00C2D104 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8B9F64CC1E695D55005FEA98 /* Main.storyboard */ = {
+		8B98251D1E74201C00C2D104 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8B9F64CD1E695D55005FEA98 /* Base */,
+				8B98251E1E74201C00C2D104 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		8B9F64D11E695D55005FEA98 /* LaunchScreen.storyboard */ = {
+		8B9825221E74201C00C2D104 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8B9F64D21E695D55005FEA98 /* Base */,
+				8B9825231E74201C00C2D104 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -263,7 +258,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8B9F64D51E695D55005FEA98 /* Debug */ = {
+		8B9825261E74201C00C2D104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,18 +298,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				REZ_SEARCH_PATHS = "";
-				SDKROOT = iphoneos10.2;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		8B9F64D61E695D55005FEA98 /* Release */ = {
+		8B9825271E74201C00C2D104 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -348,69 +339,60 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				REZ_SEARCH_PATHS = "";
-				SDKROOT = iphoneos10.2;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		8B9F64D81E695D55005FEA98 /* Debug */ = {
+		8B9825291E74201C00C2D104 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51EF2F2003E18676C185E2C9 /* Pods-MMImagePickerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GRSZLFFNPH;
-				HEADER_SEARCH_PATHS = "";
+				DEVELOPMENT_TEAM = 7NG3VCALPX;
 				INFOPLIST_FILE = MMImagePickerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lea.MMImagePickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos10.2;
 			};
 			name = Debug;
 		};
-		8B9F64D91E695D55005FEA98 /* Release */ = {
+		8B98252A1E74201C00C2D104 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94A07F1A0CE2ECF24B0E26F6 /* Pods-MMImagePickerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GRSZLFFNPH;
-				HEADER_SEARCH_PATHS = "";
+				DEVELOPMENT_TEAM = 7NG3VCALPX;
 				INFOPLIST_FILE = MMImagePickerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lea.MMImagePickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos10.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8B9F64BB1E695D55005FEA98 /* Build configuration list for PBXProject "MMImagePickerDemo" */ = {
+		8B98250C1E74201C00C2D104 /* Build configuration list for PBXProject "MMImagePickerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B9F64D51E695D55005FEA98 /* Debug */,
-				8B9F64D61E695D55005FEA98 /* Release */,
+				8B9825261E74201C00C2D104 /* Debug */,
+				8B9825271E74201C00C2D104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B9F64D71E695D55005FEA98 /* Build configuration list for PBXNativeTarget "MMImagePickerDemo" */ = {
+		8B9825281E74201C00C2D104 /* Build configuration list for PBXNativeTarget "MMImagePickerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B9F64D81E695D55005FEA98 /* Debug */,
-				8B9F64D91E695D55005FEA98 /* Release */,
+				8B9825291E74201C00C2D104 /* Debug */,
+				8B98252A1E74201C00C2D104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8B9F64B81E695D55005FEA98 /* Project object */;
+	rootObject = 8B9825091E74201C00C2D104 /* Project object */;
 }

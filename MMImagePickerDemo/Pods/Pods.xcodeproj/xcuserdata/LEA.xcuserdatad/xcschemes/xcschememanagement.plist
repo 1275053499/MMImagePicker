@@ -4,15 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MMImagePickerDemo.xcscheme</key>
+		<key>MMImagePicker.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MMImagePickerDemo.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8B9825101E74201C00C2D104</key>
+		<key>099E5B3946CF4E060BD95ACAD8DCF02C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95573E74C2E2D1D107F227CBEC300DFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

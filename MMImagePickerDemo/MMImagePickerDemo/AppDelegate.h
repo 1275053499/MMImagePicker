@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  MMImagePickerDemo
 //
-//  Created by LEA on 2017/3/3.
+//  Created by LEA on 2017/3/11.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
