@@ -4,27 +4,23 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 
+#Usage
+
 ![MMImagePicker](MMImagePicker.gif)
 
-#使用
+### CocoaPods
 
-####方式一：
 1. `pod 'MMImagePicker', '~> 1.2'`;
 2. `pod install` / `pod update`;
 3. `#import <MMImagePicker/MMAlbumPickerController.h>`.
 
-####方式二：
-
-1. 下载`MMImagePicker`文件夹，添加到自己的项目中；
-2. `#import "MMAlbumPickerController.h"`.
-
-具体使用，参考如下：
+For example：
 
 ```objc
 MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
-mmVC.delegate = self; //代理
-mmVC.mainColor = [UIColor blueColor]; //主色调
-mmVC.maximumNumberOfImage = 9; //最大选择数目
+mmVC.delegate = self;   
+mmVC.mainColor = [UIColor blueColor];  
+mmVC.maximumNumberOfImage = 9; 
 
 UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
 [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
@@ -32,11 +28,8 @@ mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
 mmNav.navigationBar.tintColor = [UIColor whiteColor];
 [self.navigationController presentViewController:mmNav animated:YES completion:nil];
 ```
-
-代理：
-
 ```objc
-#pragma mark - 代理
+#pragma mark - MMImagePickerDelegate
 - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
      NSLog(@"%@",info);
@@ -44,10 +37,17 @@ mmNav.navigationBar.tintColor = [UIColor whiteColor];
 
  - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
 {
-     NSLog(@"取消");
+     NSLog(@"Cancel");
 }
 ```
-#要求
-`iOS 7.0+ `
-`Xcode 7.0+`.
+#Requirements
+
+This library requires `iOS 7.0+` and `Xcode 7.0+`.
+
+
+#License
+
+MMImagePicker is provided under the MIT license. See LICENSE file for details.
+
+
 
