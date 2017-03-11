@@ -11,4 +11,6 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.source_files     = "MMImagePicker", "MMImagePicker/**/*.{h,m}"
   s.frameworks       = 'Foundation', 'UIKit', 'AssetsLibrary'
+
+# s.resources        = 'MMImagePicker/**/Resources/*.png'
 end
