@@ -47,7 +47,7 @@ mmNav.navigationBar.tintColor = [UIColor whiteColor];
      NSLog(@"取消");
 }
 ```
-#要求
+##要求
 `iOS 7.0+ `
 `Xcode 7.0+`.
 
