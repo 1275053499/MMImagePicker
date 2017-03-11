@@ -6,7 +6,7 @@
 
 ![MMImagePicker](MMImagePicker.gif)
 
-##使用
+#使用
 
 ####方式一：
 1. `pod 'MMImagePicker', '~> 1.2'`;
@@ -47,7 +47,7 @@ mmNav.navigationBar.tintColor = [UIColor whiteColor];
      NSLog(@"取消");
 }
 ```
-##要求
+#要求
 `iOS 7.0+ `
 `Xcode 7.0+`.
 
