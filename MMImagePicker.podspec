@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MMImagePicker"
-  s.version          = "1.1"
+  s.version          = "1.2"
   s.summary          = "A image picker used on iOS."
   s.homepage         = "https://github.com/dexianyinjiu/MMImagePicker"
   s.license          = 'MIT'
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/dexianyinjiu/MMImagePicker.git", :tag => s.version.to_s }
   s.platform         = :ios, '7.0'
   s.requires_arc     = true
-  s.source_files     = "MMImagePicker", "MMImagePicker/**/*.{h,m}"
+  s.source_files     = 'MMImagePicker/**/*.{h,m}'
+  s.resources        = "MMImagePicker/Resources/*.png"
   s.frameworks       = 'Foundation', 'UIKit', 'AssetsLibrary'
 
-# s.resources        = 'MMImagePicker/**/Resources/*.png'
 end
