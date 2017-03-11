@@ -4,9 +4,9 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 
-##使用
-
 ![MMImagePicker](MMImagePicker.gif)
+
+##使用
 
 ####方式一：
 1. `pod 'MMImagePicker', '~> 1.2'`;
