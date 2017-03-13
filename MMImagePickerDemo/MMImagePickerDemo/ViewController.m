@@ -2,12 +2,12 @@
 //  ViewController.m
 //  MMImagePickerDemo
 //
-//  Created by LEA on 2017/3/11.
+//  Created by LEA on 2017/3/13.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
 #import "ViewController.h"
-#import <MMImagePicker/MMAlbumPickerController.h>
+#import "MMAlbumPickerController.h"
 
 @interface ViewController ()
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.title = @"DEMO";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -35,6 +35,8 @@
 {
     MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
     mmVC.delegate = self;
+    mmVC.showOriginImageOption = YES;
+    mmVC.maximumNumberOfImage = 4;
     
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
@@ -59,4 +61,5 @@
 {
     [super didReceiveMemoryWarning];
 }
+
 @end

@@ -1,7 +1,0 @@
-platform :ios, ‘7.0’
-
-target 'MMImagePickerDemo' do
-
-    pod 'MMImagePicker', '~> 1.2’
-
-end

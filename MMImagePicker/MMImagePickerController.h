@@ -26,9 +26,11 @@
 
 //所选相册
 @property (nonatomic, strong) ALAssetsGroup *assetGroup;
-//主色调
+//主色调[默认蓝色]
 @property (nonatomic, strong) UIColor *mainColor;
-//最大选择数目
+//是否显示原图选项[默认NO]
+@property (nonatomic, assign) BOOL showOriginImageOption;
+//最大选择数目[默认9张]
 @property (nonatomic, assign) NSInteger maximumNumberOfImage;
 //代理
 @property (nonatomic, assign) id<MMImagePickerDelegate> delegate;

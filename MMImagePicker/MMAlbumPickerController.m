@@ -124,6 +124,7 @@
     imagePicker.delegate = self.delegate;
     imagePicker.mainColor = self.mainColor;
     imagePicker.maximumNumberOfImage = self.maximumNumberOfImage;
+    imagePicker.showOriginImageOption = self.showOriginImageOption;
     [self.navigationController pushViewController:imagePicker animated:YES];
 }
 

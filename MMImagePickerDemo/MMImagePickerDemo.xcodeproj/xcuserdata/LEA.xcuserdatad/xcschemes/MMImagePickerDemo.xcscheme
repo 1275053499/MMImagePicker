@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B9825101E74201C00C2D104"
+               BlueprintIdentifier = "8B6A5ED61E763C2600DD980B"
                BuildableName = "MMImagePickerDemo.app"
                BlueprintName = "MMImagePickerDemo"
                ReferencedContainer = "container:MMImagePickerDemo.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9825101E74201C00C2D104"
+            BlueprintIdentifier = "8B6A5ED61E763C2600DD980B"
             BuildableName = "MMImagePickerDemo.app"
             BlueprintName = "MMImagePickerDemo"
             ReferencedContainer = "container:MMImagePickerDemo.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9825101E74201C00C2D104"
+            BlueprintIdentifier = "8B6A5ED61E763C2600DD980B"
             BuildableName = "MMImagePickerDemo.app"
             BlueprintName = "MMImagePickerDemo"
             ReferencedContainer = "container:MMImagePickerDemo.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B9825101E74201C00C2D104"
+            BlueprintIdentifier = "8B6A5ED61E763C2600DD980B"
             BuildableName = "MMImagePickerDemo.app"
             BlueprintName = "MMImagePickerDemo"
             ReferencedContainer = "container:MMImagePickerDemo.xcodeproj">

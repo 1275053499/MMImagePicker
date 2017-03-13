@@ -68,6 +68,9 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.bottomView];
     [self getPhotoAlbum];
+    
+    //是否显示原图选项
+    _originBtn.hidden = !self.showOriginImageOption;
 }
 
 #pragma mark - 获取照片刷新瀑布流

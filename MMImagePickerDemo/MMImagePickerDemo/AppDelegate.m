@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  MMImagePickerDemo
 //
-//  Created by LEA on 2017/3/11.
+//  Created by LEA on 2017/3/13.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
@@ -30,7 +30,6 @@
     
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
