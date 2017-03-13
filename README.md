@@ -21,6 +21,7 @@ MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
 mmVC.delegate = self;   
 mmVC.mainColor = [UIColor blueColor];  
 mmVC.maximumNumberOfImage = 9; 
+mmVC.showOriginImageOption = YES;
 
 UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
 [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
