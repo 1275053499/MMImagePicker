@@ -56,8 +56,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     [super viewDidLoad];
     self.title = @"选取照片";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(barButtonItemAction:)];
-    
+    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(rightBarItemAction)];
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    if ([viewControllers count] > 1) {
+        self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mmphoto_back"] target:self action:@selector(leftBarItemAction)];
+    }
+
     _isOrigin = NO;
     if (!_mainColor) {
         _mainColor = kMainColor;
@@ -116,6 +120,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 
 - (void)getPhotos
 {
+    [self showHUD:@"图片加载中"];
     self.mmAssetArray = [[NSMutableArray alloc] init];
     self.selectedAssetArray = [[NSMutableArray alloc] init];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -135,6 +140,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
          }];
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
+            [self hideHUD];
         });
     });
 }
@@ -211,12 +217,17 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 }
 
 #pragma mark - 事件处理
-- (void)barButtonItemAction:(UIButton *)btn
+- (void)rightBarItemAction
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     if ([self.delegate respondsToSelector:@selector(mmImagePickerControllerDidCancel:)]) {
         [self.delegate mmImagePickerControllerDidCancel:self];
     }
+}
+
+- (void)leftBarItemAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)buttonAction:(UIButton *)btn

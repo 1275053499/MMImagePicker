@@ -26,6 +26,8 @@
 		8B6A5F101E763F3500DD980B /* mmphoto_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F031E763F3500DD980B /* mmphoto_overlay@2x.png */; };
 		8B6A5F111E763F3500DD980B /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F051E763F3500DD980B /* UIView+Geometry.m */; };
 		8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F121E763F8600DD980B /* default_bar@2x.png */; };
+		8B6A5F511E76A2CB00DD980B /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */; };
+		8B6A5F541E76A2F600DD980B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,10 @@
 		8B6A5F041E763F3500DD980B /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
 		8B6A5F051E763F3500DD980B /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
 		8B6A5F121E763F8600DD980B /* default_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_bar@2x.png"; sourceTree = "<group>"; };
+		8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		8B6A5F521E76A2F600DD980B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +135,12 @@
 				8B6A5EF71E763F3500DD980B /* MMAssetCell.m */,
 				8B6A5EF81E763F3500DD980B /* MMBarButtonItem.h */,
 				8B6A5EF91E763F3500DD980B /* MMBarButtonItem.m */,
+				8B6A5F521E76A2F600DD980B /* MBProgressHUD.h */,
+				8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */,
 				8B6A5F041E763F3500DD980B /* UIView+Geometry.h */,
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
+				8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */,
+				8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */,
 				8B6A5EFE1E763F3500DD980B /* Resources */,
 			);
 			name = MMImagePicker;
@@ -233,6 +243,8 @@
 				8B6A5F071E763F3500DD980B /* MMAlbumPickerController.m in Sources */,
 				8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */,
 				8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */,
+				8B6A5F511E76A2CB00DD980B /* UIViewController+HUD.m in Sources */,
+				8B6A5F541E76A2F600DD980B /* MBProgressHUD.m in Sources */,
 				8B6A5EDC1E763C2600DD980B /* main.m in Sources */,
 				8B6A5F081E763F3500DD980B /* MMAssetCell.m in Sources */,
 				8B6A5F061E763F3500DD980B /* MMAlbumCell.m in Sources */,

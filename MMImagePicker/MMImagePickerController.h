@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
+#import "UIViewController+HUD.h"
 
 //#### MMALAsset
 #pragma mark - MMALAsset

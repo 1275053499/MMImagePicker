@@ -29,6 +29,7 @@
     self.assetGroups = [[NSMutableArray alloc] init];
     
     //获取系统相册列表
+    [self showHUD:@"列表加载中"];
     self.library = [[ALAssetsLibrary alloc] init];
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if (!group) {
@@ -45,6 +46,7 @@
                 [self.assetGroups addObject:group];
             }
             [self.tableView reloadData];
+            [self hideHUD];
         }
     } failureBlock:^(NSError *error) {
         //无权限
@@ -64,7 +66,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.rowHeight = 60.0f;
@@ -91,6 +93,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.assetGroups count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
