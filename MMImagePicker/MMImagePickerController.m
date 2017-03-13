@@ -285,9 +285,9 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
                 [dictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
                 [result addObject:dictionary];
             }
-            [self.delegate mmImagePickerController:self didFinishPickingMediaWithInfo:result];
-            [self dismissViewControllerAnimated:YES completion:nil];
         }
+        [self.delegate mmImagePickerController:self didFinishPickingMediaWithInfo:result];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

@@ -10,6 +10,10 @@
 #import "MMAlbumPickerController.h"
 
 @interface ViewController ()
+{
+    UIView *contentView;
+    NSMutableArray *imageArray;
+}
 
 @end
 
@@ -22,12 +26,18 @@
     self.title = @"DEMO";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.width-100)/2, 80, 100, 44)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.width-100)/2, 50, 100, 44)];
     btn.backgroundColor = [UIColor lightGrayColor];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitle:@"选择图片" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    contentView = [[UIView alloc] initWithFrame:CGRectMake(10, btn.bottom+50, self.view.width-20, self.view.height-btn.bottom-50)];
+    contentView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:contentView];
+    
+    imageArray = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 选择图片
@@ -36,7 +46,7 @@
     MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
     mmVC.delegate = self;
     mmVC.showOriginImageOption = YES;
-    mmVC.maximumNumberOfImage = 4;
+    mmVC.maximumNumberOfImage = 9;
     
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
@@ -48,12 +58,65 @@
 #pragma mark - 代理
 - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
-    NSLog(@"%@",info);
+    [imageArray removeAllObjects];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (int i = 0; i < [info count]; i ++)
+        {
+            NSDictionary *dict = [info objectAtIndex:i];
+            UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
+            NSData *imageData = UIImagePNGRepresentation(image);
+            int size = (int)[imageData length]/1024;
+            if (size < 100) {
+                imageData = UIImageJPEGRepresentation(image, 0.1);
+            } else {
+                imageData = UIImageJPEGRepresentation(image, 0.05);
+            }
+            [imageArray addObject:[UIImage imageWithData:imageData]];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadImageListView];
+        });
+    });
 }
 
 - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker
 {
     NSLog(@"取消");
+}
+
+#pragma mark - 显示
+- (void)loadImageListView
+{
+    for(UIView *sub in [contentView subviews]) {
+        [sub removeFromSuperview];
+    }
+    CGFloat X = 0;
+    CGFloat Y = 0;
+    CGFloat ITEM_W = (self.view.width-20-3*5)/4;
+    NSInteger count = 0;
+    for (NSInteger i = 0;i < [imageArray count]; i ++)
+    {
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(X, Y, ITEM_W, ITEM_W)];
+        imageV.backgroundColor = [UIColor clearColor];
+        imageV.image = [imageArray objectAtIndex:i];
+        imageV.contentMode = UIViewContentModeScaleAspectFill;
+        imageV.contentScaleFactor = [[UIScreen mainScreen] scale];
+        imageV.clipsToBounds = YES;
+        [contentView addSubview:imageV];
+
+        count ++;
+        X = (ITEM_W+5)*count;
+        if (count !=0 && count%4==0) {
+            X = 0;
+            count = 0;
+            Y += ITEM_W+5;
+        }
+    }
+    
+    CGFloat H = Y+ITEM_W;
+    if (count%4 == 0) {
+        H -= ITEM_W;
+    }
 }
 
 #pragma mark -
