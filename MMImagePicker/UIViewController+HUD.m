@@ -1,12 +1,13 @@
 //
 //  UIViewController+HUD.m
-//  MMImagePickerDemo
+//  MMImagePicker
 //
-//  Created by LEA on 2017/3/13.
+//  Created by LEA on 2017/3/2.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
 #import "UIViewController+HUD.h"
+#import "MBProgressHUD.h"
 #import <objc/runtime.h>
 
 static char *hudKey = "hudKey" ;
@@ -27,10 +28,11 @@ static char *hudKey = "hudKey" ;
 
 - (void)showHUD:(NSString *)title
 {
-    self.hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    self.hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     self.hud.customView = nil;
     self.hud.dimBackground = NO;
     self.hud.labelText = title;
+    self.hud.cornerRadius = 6.0f;
     self.hud.mode = MBProgressHUDModeIndeterminate;
     self.hud.alpha = 1.0f;
 }

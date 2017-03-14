@@ -8,6 +8,7 @@
 
 #import "MMImagePickerController.h"
 #import "MMImagePreviewController.h"
+#import "UIViewController+HUD.h"
 #import "MMBarButtonItem.h"
 #import "UIView+Geometry.h"
 #import "MMAssetCell.h"
@@ -219,7 +220,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 #pragma mark - 事件处理
 - (void)rightBarItemAction
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
     if ([self.delegate respondsToSelector:@selector(mmImagePickerControllerDidCancel:)]) {
         [self.delegate mmImagePickerControllerDidCancel:self];
     }
@@ -298,7 +298,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
             }
         }
         [self.delegate mmImagePickerController:self didFinishPickingMediaWithInfo:result];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

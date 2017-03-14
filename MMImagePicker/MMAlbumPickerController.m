@@ -7,6 +7,12 @@
 //
 
 #import "MMAlbumPickerController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "UIViewController+HUD.h"
+#import "UIView+Geometry.h"
+#import "MMBarButtonItem.h"
+#import "MMImagePickerController.h"
+#import "MMAlbumCell.h"
 
 @interface MMAlbumPickerController ()<UITableViewDelegate,UITableViewDataSource>
 

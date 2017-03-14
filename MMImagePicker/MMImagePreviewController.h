@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView+Geometry.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface MMImagePreviewController : UIViewController
