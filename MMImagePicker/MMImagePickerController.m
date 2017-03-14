@@ -281,14 +281,8 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
             ALAssetRepresentation *assetRep = [asset defaultRepresentation];
             if(assetRep != nil)
             {
-                CGImageRef imgRef = nil;
+                CGImageRef imgRef = [assetRep fullScreenImage];
                 UIImageOrientation orientation = UIImageOrientationUp;
-                if (_isOrigin) {
-                    imgRef = [assetRep fullResolutionImage];
-                    orientation =(UIImageOrientation) [assetRep orientation];
-                } else {
-                    imgRef = [assetRep fullScreenImage];
-                }
                 UIImage *image = [UIImage imageWithCGImage:imgRef scale:1.0f orientation:orientation];
                 [dictionary setObject:image forKey:UIImagePickerControllerOriginalImage];
                 [dictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];

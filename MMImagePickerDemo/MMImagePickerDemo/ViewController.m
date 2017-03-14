@@ -66,12 +66,12 @@
         {
             NSDictionary *dict = [info objectAtIndex:i];
             UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
-            NSData *imageData = UIImagePNGRepresentation(image);
+            NSData *imageData = UIImageJPEGRepresentation(image,1.0);
             int size = (int)[imageData length]/1024;
             if (size < 100) {
-                imageData = UIImageJPEGRepresentation(image, 0.1);
+                imageData = UIImageJPEGRepresentation(image, 0.5);
             } else {
-                imageData = UIImageJPEGRepresentation(image, 0.05);
+                imageData = UIImageJPEGRepresentation(image, 0.1);
             }
             [imageArray addObject:[UIImage imageWithData:imageData]];
         }

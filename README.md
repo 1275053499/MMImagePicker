@@ -10,7 +10,7 @@
 
 ### CocoaPods
 
-1. `pod 'MMImagePicker', '~> 1.7'`;
+1. `pod 'MMImagePicker', '~> 1.8'`;
 2. `pod install` / `pod update`;
 3. `#import <MMImagePicker/MMAlbumPickerController.h>`.
 
