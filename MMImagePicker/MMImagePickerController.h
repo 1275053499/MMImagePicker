@@ -35,6 +35,9 @@
 //代理
 @property (nonatomic, assign) id<MMImagePickerDelegate> delegate;
 
+//是否回传原图[可用于控制图片压系数]
+@property (nonatomic, assign, readonly) BOOL isOrigin;
+
 @end
 
 @protocol MMImagePickerDelegate <NSObject>

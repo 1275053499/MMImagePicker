@@ -46,8 +46,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 @property (nonatomic,strong) UIButton *finishBtn;
 @property (nonatomic,strong) UILabel *numberLab;
 
-@property (nonatomic,assign) BOOL isOrigin;
-
 @end
 
 @implementation MMImagePickerController
@@ -201,7 +199,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _numberLab.layer.masksToBounds = YES;
         _numberLab.textColor = [UIColor whiteColor];
         _numberLab.textAlignment = NSTextAlignmentCenter;
-        _numberLab.font = [UIFont boldSystemFontOfSize:14.0];
+        _numberLab.font = [UIFont boldSystemFontOfSize:13.0];
         _numberLab.adjustsFontSizeToFitWidth = YES;
         [_bottomView addSubview:_numberLab];
         _numberLab.hidden = YES;
