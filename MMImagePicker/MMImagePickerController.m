@@ -85,23 +85,24 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         return;
     }
     
-    //## 未选择相册
-    //1.获取系统相册列表
+    //## 未选择相册[默认进入相机胶卷]
+    //1.获取相机胶卷
     self.library = [[ALAssetsLibrary alloc] init];
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        //为空时，枚举完成
         if (!group) {
             return ;
         }
         //2.剔除空相册
         NSInteger count = [group numberOfAssets];
         if (count) {
-            NSString *groupPropertyName = [group valueForProperty:ALAssetsGroupPropertyName];
             NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
-            if ([[groupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+            if (nType == ALAssetsGroupSavedPhotos) {
                 self.assetGroup = group;
+                //3.获取该相册照片
+                [self getPhotos];
+                return;
             }
-            //3.获取该相册照片
-            [self getPhotos];
         }
     } failureBlock:^(NSError *error) {
         //## 无权限提示
@@ -125,7 +126,11 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
          {
-             if (!result) {
+             if (!result) {  //为空时，枚举完成
+                 dispatch_sync(dispatch_get_main_queue(), ^{
+                     [self.collectionView reloadData];
+                     [self hideHUD];
+                 });
                  return;
              }
              //只处理图片[忽略视频]
@@ -137,10 +142,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
                  [self.mmAssetArray addObject:mmAsset];
              }
          }];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-            [self hideHUD];
-        });
     });
 }
 

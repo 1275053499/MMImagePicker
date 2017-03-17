@@ -38,23 +38,24 @@
     [self showHUD:@"列表加载中"];
     self.library = [[ALAssetsLibrary alloc] init];
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        //为空时，枚举完成
         if (!group) {
+            [self.tableView reloadData];
+            [self hideHUD];
             return ;
         }
         //剔除空相册
         NSInteger count = [group numberOfAssets];
         if (count) {
-            NSString *groupPropertyName = [group valueForProperty:ALAssetsGroupPropertyName];
             NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
-            if ([[groupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+            if (nType == ALAssetsGroupSavedPhotos) {
                 [self.assetGroups insertObject:group atIndex:0];
             } else {
                 [self.assetGroups addObject:group];
             }
-            [self.tableView reloadData];
-            [self hideHUD];
         }
     } failureBlock:^(NSError *error) {
+        [self hideHUD];
         //无权限
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
@@ -119,7 +120,7 @@
     ALAssetsGroup *assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
     NSString *groupPropertyName = [assetGroup valueForProperty:ALAssetsGroupPropertyName];
     NSUInteger nType = [[assetGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
-    if ([[groupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+    if (nType == ALAssetsGroupSavedPhotos) {
         groupPropertyName = @"相机胶卷";
     }
     NSInteger count = [assetGroup numberOfAssets];
