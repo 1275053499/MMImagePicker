@@ -4,8 +4,6 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/MMImagePicker.svg?style=flat)](http://cocoapods.org/?q=MMImagePicker)&nbsp;
 
-# Usage
-
 ![MMImagePicker](MMImagePicker.gif)
 
 ### CocoaPods
