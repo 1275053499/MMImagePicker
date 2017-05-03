@@ -6,7 +6,7 @@
 
 ![MMImagePicker](MMImagePicker.gif)
 
-### CocoaPods
+## CocoaPods
 
 1. `pod 'MMImagePicker', '~> 1.9'`;
 2. `pod install` / `pod update`;
@@ -39,12 +39,12 @@ mmNav.navigationBar.tintColor = [UIColor whiteColor];
      NSLog(@"Cancel");
 }
 ```
-# Requirements
+## Requirements
 
 This library requires `iOS 7.0+` and `Xcode 7.0+`.
 
 
-# License
+## License
 
 MMImagePicker is provided under the MIT license. See LICENSE file for details.
 
