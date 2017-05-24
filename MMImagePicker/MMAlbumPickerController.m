@@ -17,7 +17,7 @@
 @interface MMAlbumPickerController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *assetGroups;
+@property (strong, nonatomic) NSMutableArray<ALAssetsGroup *> *assetGroups;
 @property (strong, nonatomic) ALAssetsLibrary *library;
 
 @end

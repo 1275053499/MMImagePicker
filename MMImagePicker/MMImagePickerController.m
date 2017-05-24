@@ -35,10 +35,8 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 
 @property (nonatomic,strong) ALAssetsLibrary *library;
 @property (nonatomic,strong) UICollectionView *collectionView;
-//@[MMAlsset,MMAlsset...]
-@property (nonatomic,strong) NSMutableArray *mmAssetArray;
-//@[Alsset,Alsset...]
-@property (nonatomic,strong) NSMutableArray *selectedAssetArray;
+@property (nonatomic,strong) NSMutableArray<MMALAsset *> *mmAssetArray;
+@property (nonatomic,strong) NSMutableArray<ALAsset *> *selectedAssetArray;
 
 @property (nonatomic,strong) UIView *bottomView;
 @property (nonatomic,strong) UIButton *previewBtn;

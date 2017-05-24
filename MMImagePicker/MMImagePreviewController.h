@@ -11,7 +11,7 @@
 
 @interface MMImagePreviewController : UIViewController
 
-@property (nonatomic,strong) NSMutableArray *assetArray;
+@property (nonatomic,strong) NSMutableArray<ALAsset *> *assetArray;
 @property (nonatomic, copy) void(^photoDeleteBlock)(ALAsset *asset);
 
 @end
