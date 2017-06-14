@@ -7,10 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "MMAlbumPickerController.h"
+#import "MMImagePickerController.h"
 #import "UIViewController+HUD.h"
 
-@interface ViewController ()
+@interface ViewController () <MMImagePickerDelegate>
 {
     UIView *contentView;
     NSMutableArray *imageArray;
@@ -44,11 +44,12 @@
 #pragma mark - 选择图片
 - (void)btClicked
 {
-    MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
+    MMImagePickerController *mmVC = [[MMImagePickerController alloc] init];
     mmVC.delegate = self;
     mmVC.showOriginImageOption = YES;
     mmVC.maximumNumberOfImage = 9;
-    
+//    mmVC.imageCropAble = YES;
+//    mmVC.singleImageOption = YES;
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
     mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;

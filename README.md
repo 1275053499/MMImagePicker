@@ -8,14 +8,14 @@
 
 ## CocoaPods
 
-1. `pod 'MMImagePicker', '~> 2.0'`;
+1. `pod 'MMImagePicker', '~> 2.1'`;
 2. `pod install` / `pod update`;
-3. `#import <MMImagePicker/MMAlbumPickerController.h>`.
+3. `#import <MMImagePicker/MMImagePickerController.h>`.
 
 For example：
 
 ```objc
-MMAlbumPickerController *mmVC = [[MMAlbumPickerController alloc] init];
+MMImagePickerController *mmVC = [[MMImagePickerController alloc] init];
 mmVC.delegate = self;   
 mmVC.mainColor = [UIColor blueColor];  
 mmVC.maximumNumberOfImage = 9; 
