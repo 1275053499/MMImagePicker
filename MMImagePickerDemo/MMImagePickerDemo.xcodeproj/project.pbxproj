@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B0F1EC61EF2218000F77F06 /* MMImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */; };
+		8B0F1ECA1EF2353D00F77F06 /* MMImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */; };
 		8B6A5EDC1E763C2600DD980B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDB1E763C2600DD980B /* main.m */; };
 		8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDE1E763C2600DD980B /* AppDelegate.m */; };
 		8B6A5EE21E763C2600DD980B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE11E763C2600DD980B /* ViewController.m */; };
@@ -28,8 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MMImagePicker.bundle; sourceTree = "<group>"; };
 		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
+		8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MMImagePicker.bundle; sourceTree = "<group>"; };
 		8B6A5ED71E763C2600DD980B /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6A5EDB1E763C2600DD980B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B6A5EDD1E763C2600DD980B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,14 +74,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B0F1EC41EF2218000F77F06 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		8B6A5ECE1E763C2600DD980B = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +140,7 @@
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
 				8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */,
 				8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */,
-				8B0F1EC41EF2218000F77F06 /* Resources */,
+				8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */,
 			);
 			name = MMImagePicker;
 			path = ../../MMImagePicker;
@@ -213,7 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0F1EC61EF2218000F77F06 /* MMImagePicker.bundle in Resources */,
+				8B0F1ECA1EF2353D00F77F06 /* MMImagePicker.bundle in Resources */,
 				8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */,
 				8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */,
 				8B6A5EE71E763C2600DD980B /* Assets.xcassets in Resources */,
