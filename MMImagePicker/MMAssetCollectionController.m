@@ -9,17 +9,8 @@
 #import "MMAssetCollectionController.h"
 #import "MMImagePreviewController.h"
 #import "MMImageCropController.h"
-#import "UIViewController+HUD.h"
-#import "MMBarButtonItem.h"
-#import "UIView+Geometry.h"
+#import "MMImagePickerComponent.h"
 #import "MMAssetCell.h"
-
-//#### 宏定义
-#define kDeviceIsIphone6p       CGSizeEqualToSize(CGSizeMake(1242,2208), [[[UIScreen mainScreen] currentMode] size])
-#define kBlankWidth             4.0f
-#define kBottomHeight           44.0f
-#define RGBColor(r,g,b,a)       [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define kMainColor              RGBColor(26, 181, 237, 1.0)
 
 //#### MMALAsset
 @implementation MMALAsset
@@ -54,7 +45,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     [super viewDidLoad];
     self.title = @"选取照片";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mmphoto_back"] target:self action:@selector(leftBarItemAction)];
+    self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] target:self action:@selector(leftBarItemAction)];
     self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(rightBarItemAction)];
 
     _isOrigin = NO;
@@ -80,10 +71,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 {
     self.mmAssetArray = [[NSMutableArray alloc] init];
     self.selectedAssetArray = [[NSMutableArray alloc] init];
+    
+    __weak typeof(self) weakSelf = self;
     [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
      {
          if (!result) {  //为空时，枚举完成
-             [self.collectionView reloadData];
+             [weakSelf.collectionView reloadData];
              return;
          }
          //只处理图片[忽略视频]
@@ -92,7 +85,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
              MMALAsset *mmAsset = [[MMALAsset alloc] init];
              mmAsset.asset = result;
              mmAsset.isSelected = NO;
-             [self.mmAssetArray addObject:mmAsset];
+             [weakSelf.mmAssetArray addObject:mmAsset];
          }
      }];
 }
@@ -141,7 +134,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_originBtn setTitle:@"原图" forState:UIControlStateNormal];
         [_originBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, 60)];
-        [_originBtn setImage:[UIImage imageNamed:@"mmphoto_mark"] forState:UIControlStateNormal];
+        [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_mark")] forState:UIControlStateNormal];
         [_originBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [_originBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_originBtn];
@@ -187,27 +180,29 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     {
         MMImagePreviewController *previewVC = [[MMImagePreviewController alloc] init];
         previewVC.assetArray = self.selectedAssetArray;
+        
+        __weak typeof(self) weakSelf = self;
         [previewVC setPhotoDeleteBlock:^(ALAsset *asset)
          {
-             for (MMALAsset *mmAsset in self.mmAssetArray) {
+             for (MMALAsset *mmAsset in weakSelf.mmAssetArray) {
                  if (mmAsset.asset == asset)  {
-                     NSInteger index = [self.mmAssetArray indexOfObject:mmAsset];
+                     NSInteger index = [weakSelf.mmAssetArray indexOfObject:mmAsset];
                      mmAsset.isSelected = NO;
-                     [self.mmAssetArray replaceObjectAtIndex:index withObject:mmAsset];
-                     [self.collectionView reloadData];
+                     [weakSelf.mmAssetArray replaceObjectAtIndex:index withObject:mmAsset];
+                     [weakSelf.collectionView reloadData];
                      break;
                  }
              }
-             [self updateUI];
+             [weakSelf updateUI];
          }];
         [self.navigationController pushViewController:previewVC animated:YES];
     }
     else if (btn.tag == 101)  //原图
     {
         if (_isOrigin) {
-            [_originBtn setImage:[UIImage imageNamed:@"mmphoto_mark"] forState:UIControlStateNormal];
+            [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_mark")] forState:UIControlStateNormal];
         } else {
-            [_originBtn setImage:[UIImage imageNamed:@"mmphoto_marked"] forState:UIControlStateNormal];
+            [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_marked")] forState:UIControlStateNormal];
         }
         _isOrigin = !_isOrigin;
     }
@@ -331,8 +326,10 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         MMImageCropController *controller = [[MMImageCropController alloc] init];
         controller.originalImage = originalImage;
         controller.imageCropSize = self.imageCropSize;
+        
+        __weak typeof(self) weakSelf = self;
         [controller setImageCropBlock:^(UIImage *cropImage){
-            if (!self.completion) {
+            if (!weakSelf.completion) {
                 NSLog(@"警告:未设置回传!!!");
                 return;
             }
@@ -349,7 +346,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
             [dictionary setObject:cropImage forKey:UIImagePickerControllerOriginalImage];
             [dictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
             //回传
-            self.completion(@[dictionary], _isOrigin, NO);
+            weakSelf.completion(@[dictionary], _isOrigin, NO);
         }];
         [self.navigationController pushViewController:controller animated:YES];
         return;

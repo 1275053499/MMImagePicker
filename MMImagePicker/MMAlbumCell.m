@@ -7,7 +7,7 @@
 //
 
 #import "MMAlbumCell.h"
-#import "UIView+Geometry.h"
+#import "MMImagePickerComponent.h"
 
 @implementation MMAlbumCell
 

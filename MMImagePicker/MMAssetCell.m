@@ -7,6 +7,7 @@
 //
 
 #import "MMAssetCell.h"
+#import "MMImagePickerComponent.h"
 
 @interface MMAssetCell ()
 
@@ -46,7 +47,7 @@
 {
     if (!_overLay) {
         _overLay = [[UIImageView alloc] initWithFrame:self.bounds];
-        _overLay.image = [UIImage imageNamed:@"mmphoto_overlay"];
+        _overLay.image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_overlay")];
     }
     return _overLay;
 }

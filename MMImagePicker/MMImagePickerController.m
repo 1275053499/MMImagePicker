@@ -9,7 +9,6 @@
 #import "MMImagePickerController.h"
 #import "MMAssetCollectionController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "UIViewController+HUD.h"
 #import "MMAlbumCell.h"
 
 @interface MMImagePickerController ()<UITableViewDelegate,UITableViewDataSource>
@@ -26,7 +25,7 @@
 {
     [super viewDidLoad];
     self.title = @"照片";
-    self.view.backgroundColor = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
+    self.view.backgroundColor = RGBColor(240.0, 240.0, 240.0, 1.0);
     self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
     
@@ -35,12 +34,14 @@
     //获取系统相册列表
     [self showHUD:@"图库加载中"];
     self.library = [[ALAssetsLibrary alloc] init];
+    
+    __weak typeof(self) weakSelf = self;
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         //为空时，枚举完成
         if (!group) {
-            [self hideHUD];
-            [self.tableView reloadData];
-            [self pushImagePickerByAssetGroup:[self.assetGroups objectAtIndex:0] animated:NO];
+            [weakSelf hideHUD];
+            [weakSelf.tableView reloadData];
+            [weakSelf pushImagePickerByAssetGroup:[weakSelf.assetGroups objectAtIndex:0] animated:NO];
             return ;
         }
         //剔除空相册
@@ -48,13 +49,13 @@
         if (count) {
             NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
             if (nType == ALAssetsGroupSavedPhotos) {
-                [self.assetGroups insertObject:group atIndex:0];
+                [weakSelf.assetGroups insertObject:group atIndex:0];
             } else {
-                [self.assetGroups addObject:group];
+                [weakSelf.assetGroups addObject:group];
             }
         }
     } failureBlock:^(NSError *error) {
-        [self hideHUD];
+        [weakSelf hideHUD];
         //无权限
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
@@ -165,7 +166,7 @@
             }
         } else { //确认选择
             if ([weakSelf.delegate respondsToSelector:@selector(mmImagePickerController:didFinishPickingMediaWithInfo:)]) {
-                [weakSelf.delegate mmImagePickerController:self didFinishPickingMediaWithInfo:info];
+                [weakSelf.delegate mmImagePickerController:weakSelf didFinishPickingMediaWithInfo:info];
             }
         }
     }];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0F1EC61EF2218000F77F06 /* MMImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */; };
 		8B6A5EDC1E763C2600DD980B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDB1E763C2600DD980B /* main.m */; };
 		8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDE1E763C2600DD980B /* AppDelegate.m */; };
 		8B6A5EE21E763C2600DD980B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE11E763C2600DD980B /* ViewController.m */; };
@@ -18,11 +19,6 @@
 		8B6A5F091E763F3500DD980B /* MMBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF91E763F3500DD980B /* MMBarButtonItem.m */; };
 		8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */; };
 		8B6A5F0B1E763F3500DD980B /* MMImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */; };
-		8B6A5F0C1E763F3500DD980B /* mmphoto_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFF1E763F3500DD980B /* mmphoto_back@2x.png */; };
-		8B6A5F0D1E763F3500DD980B /* mmphoto_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F001E763F3500DD980B /* mmphoto_delete@2x.png */; };
-		8B6A5F0E1E763F3500DD980B /* mmphoto_mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F011E763F3500DD980B /* mmphoto_mark@2x.png */; };
-		8B6A5F0F1E763F3500DD980B /* mmphoto_marked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F021E763F3500DD980B /* mmphoto_marked@2x.png */; };
-		8B6A5F101E763F3500DD980B /* mmphoto_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F031E763F3500DD980B /* mmphoto_overlay@2x.png */; };
 		8B6A5F111E763F3500DD980B /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F051E763F3500DD980B /* UIView+Geometry.m */; };
 		8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5F121E763F8600DD980B /* default_bar@2x.png */; };
 		8B6A5F511E76A2CB00DD980B /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */; };
@@ -32,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MMImagePicker.bundle; sourceTree = "<group>"; };
+		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
 		8B6A5ED71E763C2600DD980B /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6A5EDB1E763C2600DD980B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B6A5EDD1E763C2600DD980B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,11 +50,6 @@
 		8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePickerController.m; sourceTree = "<group>"; };
 		8B6A5EFC1E763F3500DD980B /* MMImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewController.h; sourceTree = "<group>"; };
 		8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePreviewController.m; sourceTree = "<group>"; };
-		8B6A5EFF1E763F3500DD980B /* mmphoto_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_back@2x.png"; sourceTree = "<group>"; };
-		8B6A5F001E763F3500DD980B /* mmphoto_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_delete@2x.png"; sourceTree = "<group>"; };
-		8B6A5F011E763F3500DD980B /* mmphoto_mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_mark@2x.png"; sourceTree = "<group>"; };
-		8B6A5F021E763F3500DD980B /* mmphoto_marked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_marked@2x.png"; sourceTree = "<group>"; };
-		8B6A5F031E763F3500DD980B /* mmphoto_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mmphoto_overlay@2x.png"; sourceTree = "<group>"; };
 		8B6A5F041E763F3500DD980B /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
 		8B6A5F051E763F3500DD980B /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
 		8B6A5F121E763F8600DD980B /* default_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_bar@2x.png"; sourceTree = "<group>"; };
@@ -81,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0F1EC41EF2218000F77F06 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B0F1EC51EF2218000F77F06 /* MMImagePicker.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8B6A5ECE1E763C2600DD980B = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +127,7 @@
 		8B6A5EF11E763F3500DD980B /* MMImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */,
 				8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */,
 				8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */,
 				8B6A5EFC1E763F3500DD980B /* MMImagePreviewController.h */,
@@ -146,22 +148,10 @@
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
 				8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */,
 				8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */,
-				8B6A5EFE1E763F3500DD980B /* Resources */,
+				8B0F1EC41EF2218000F77F06 /* Resources */,
 			);
 			name = MMImagePicker;
 			path = ../../MMImagePicker;
-			sourceTree = "<group>";
-		};
-		8B6A5EFE1E763F3500DD980B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8B6A5EFF1E763F3500DD980B /* mmphoto_back@2x.png */,
-				8B6A5F001E763F3500DD980B /* mmphoto_delete@2x.png */,
-				8B6A5F011E763F3500DD980B /* mmphoto_mark@2x.png */,
-				8B6A5F021E763F3500DD980B /* mmphoto_marked@2x.png */,
-				8B6A5F031E763F3500DD980B /* mmphoto_overlay@2x.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,14 +213,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0F1EC61EF2218000F77F06 /* MMImagePicker.bundle in Resources */,
 				8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */,
-				8B6A5F101E763F3500DD980B /* mmphoto_overlay@2x.png in Resources */,
-				8B6A5F0C1E763F3500DD980B /* mmphoto_back@2x.png in Resources */,
 				8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */,
-				8B6A5F0E1E763F3500DD980B /* mmphoto_mark@2x.png in Resources */,
-				8B6A5F0D1E763F3500DD980B /* mmphoto_delete@2x.png in Resources */,
 				8B6A5EE71E763C2600DD980B /* Assets.xcassets in Resources */,
-				8B6A5F0F1E763F3500DD980B /* mmphoto_marked@2x.png in Resources */,
 				8B6A5EE51E763C2600DD980B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

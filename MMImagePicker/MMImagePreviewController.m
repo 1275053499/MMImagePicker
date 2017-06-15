@@ -7,7 +7,7 @@
 //
 
 #import "MMImagePreviewController.h"
-#import "UIView+Geometry.h"
+#import "MMImagePickerComponent.h"
 
 @interface MMImagePreviewController ()<UIScrollViewDelegate>
 
@@ -60,7 +60,7 @@
     _titleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     [self.view addSubview:_titleView];
     
-    UIImage *image = [UIImage imageNamed:@"mmphoto_back"];
+    UIImage *image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")];
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, _titleView.height, _titleView.height)];
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn setImageEdgeInsets:UIEdgeInsetsMake((_titleView.height-image.size.height)/2, 0, (_titleView.height-image.size.height)/2, 0)];
@@ -74,7 +74,7 @@
     _titleLab.text = [NSString stringWithFormat:@"1/%d",(int)[self.assetArray count]];
     [_titleView addSubview:_titleLab];
     
-    image = [UIImage imageNamed:@"mmphoto_delete"];
+    image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_delete")];
     UIButton *delBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width-_titleView.height, 0, _titleView.height, _titleView.height)];
     [delBtn setImage:image forState:UIControlStateNormal];
     [delBtn setImageEdgeInsets:UIEdgeInsetsMake((_titleView.height-image.size.height)/2, 0, (_titleView.height-image.size.height)/2, 0)];
@@ -114,9 +114,10 @@
 - (void)singleTapGestureCallback:(UITapGestureRecognizer *)gesture
 {
     _isHidden = !_isHidden;
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.5
                      animations:^{
-                         _titleView.hidden = _isHidden;
+                         weakSelf.titleView.hidden = weakSelf.isHidden;
                      }];
 }
 
@@ -196,7 +197,7 @@
     [_scrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
 }
 
-#pragma mark - scrollView delegate
+#pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return [scrollView.subviews objectAtIndex:0];

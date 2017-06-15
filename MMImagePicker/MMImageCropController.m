@@ -7,8 +7,7 @@
 //
 
 #import "MMImageCropController.h"
-#import "MMBarButtonItem.h"
-#import "UIView+Geometry.h"
+#import "MMImagePickerComponent.h"
 
 @interface MMImageCropController ()
 
@@ -36,7 +35,7 @@
     [super viewDidLoad];
     self.title = @"图片裁剪";
     self.view.backgroundColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mmphoto_back"] target:self action:@selector(leftBarItemAction)];
+    self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] target:self action:@selector(leftBarItemAction)];
     self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"确定" target:self action:@selector(rightBarItemAction)];
     
     //添加视图
@@ -72,6 +71,7 @@
 #pragma mark - 事件处理
 - (void)leftBarItemAction
 {
+    self.imageView.frame = _oldFrame;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -144,10 +144,12 @@
         CGRect newFrame = self.imageView.frame;
         newFrame = [self handleScaleOverflow:newFrame];
         newFrame = [self handleBorderOverflow:newFrame];
+        
+        __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.3f
                          animations:^{
-                             _latestFrame = newFrame;
-                             self.imageView.frame = newFrame;
+                             weakSelf.latestFrame = newFrame;
+                             weakSelf.imageView.frame = newFrame;
                          }];
     }
 }
@@ -171,10 +173,12 @@
     {
         CGRect newFrame = self.imageView.frame;
         newFrame = [self handleBorderOverflow:newFrame];
+        
+        __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.3f
                          animations:^{
-                             _latestFrame = newFrame;
-                             self.imageView.frame = newFrame;
+                             weakSelf.latestFrame = newFrame;
+                             weakSelf.imageView.frame = newFrame;
                          }];
     }
 }
