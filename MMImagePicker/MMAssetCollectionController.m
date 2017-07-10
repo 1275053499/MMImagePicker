@@ -85,7 +85,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
              MMALAsset *mmAsset = [[MMALAsset alloc] init];
              mmAsset.asset = result;
              mmAsset.isSelected = NO;
-             [weakSelf.mmAssetArray addObject:mmAsset];
+             [weakSelf.mmAssetArray insertObject:mmAsset atIndex:0];
          }
      }];
 }
@@ -295,13 +295,11 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //## 倒序显示
-    NSInteger index = self.mmAssetArray.count - 1 - indexPath.row;
-    MMALAsset *asset = [self.mmAssetArray objectAtIndex:index];
+    MMALAsset *mmAsset = [self.mmAssetArray objectAtIndex:indexPath.row];
     //## 赋值
     MMAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.image = [UIImage imageWithCGImage:asset.asset.thumbnail];
-    cell.selected = asset.isSelected;
+    cell.image = [UIImage imageWithCGImage:mmAsset.asset.thumbnail];
+    cell.selected = mmAsset.isSelected;
     return cell;
 }
 
@@ -309,11 +307,8 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    //## 倒序显示
-    NSInteger index = self.mmAssetArray.count - 1 - indexPath.row;
-    MMALAsset *mmAsset = [self.mmAssetArray objectAtIndex:index];
+    MMALAsset *mmAsset = [self.mmAssetArray objectAtIndex:indexPath.row];
     ALAsset *asset = mmAsset.asset;
-
     //## 图片裁剪
     if (_cropImageOption)
     {
@@ -393,7 +388,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         return;
     }
     mmAsset.isSelected = !mmAsset.isSelected;
-    [self.mmAssetArray replaceObjectAtIndex:index withObject:mmAsset];
+    [self.mmAssetArray replaceObjectAtIndex:indexPath.row withObject:mmAsset];
     [self.collectionView reloadData];
     
     if (mmAsset.isSelected) {

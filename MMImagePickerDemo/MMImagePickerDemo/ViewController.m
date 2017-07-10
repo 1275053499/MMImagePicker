@@ -48,7 +48,7 @@
     mmVC.delegate = self;
     mmVC.showOriginImageOption = YES;
     mmVC.maximumNumberOfImage = 9;
-    mmVC.cropImageOption = YES;
+//    mmVC.cropImageOption = YES;
 //    mmVC.singleImageOption = YES;
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
