@@ -25,11 +25,10 @@
 		8B6A5F541E76A2F600DD980B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */; };
 		8B7EF7061EF0E31900C9317F /* MMImageCropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EF7051EF0E31900C9317F /* MMImageCropController.m */; };
 		8B7EF77F1EF1190F00C9317F /* MMAssetCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EF77E1EF1190F00C9317F /* MMAssetCollectionController.m */; };
-		8BB81DE11F760F180028EE76 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BB81DDF1F760F180028EE76 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
+		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
 		8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MMImagePicker.bundle; sourceTree = "<group>"; };
 		8B6A5ED71E763C2600DD980B /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6A5EDB1E763C2600DD980B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,9 +61,6 @@
 		8B7EF7051EF0E31900C9317F /* MMImageCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageCropController.m; sourceTree = "<group>"; };
 		8B7EF77D1EF1190F00C9317F /* MMAssetCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAssetCollectionController.h; sourceTree = "<group>"; };
 		8B7EF77E1EF1190F00C9317F /* MMAssetCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAssetCollectionController.m; sourceTree = "<group>"; };
-		8BB81DE01F760F180028EE76 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8BB81DE21F760F1F0028EE76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8BB81DE31F760F270028EE76 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +140,6 @@
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
 				8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */,
 				8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */,
-				8BB81DDF1F760F180028EE76 /* Localizable.strings */,
 				8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */,
 			);
 			name = MMImagePicker;
@@ -213,7 +208,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0F1ECA1EF2353D00F77F06 /* MMImagePicker.bundle in Resources */,
-				8BB81DE11F760F180028EE76 /* Localizable.strings in Resources */,
 				8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */,
 				8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */,
 				8B6A5EE71E763C2600DD980B /* Assets.xcassets in Resources */,
@@ -261,16 +255,6 @@
 				8B6A5EE91E763C2600DD980B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		8BB81DDF1F760F180028EE76 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8BB81DE01F760F180028EE76 /* zh-Hans */,
-				8BB81DE21F760F1F0028EE76 /* en */,
-				8BB81DE31F760F270028EE76 /* de */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
