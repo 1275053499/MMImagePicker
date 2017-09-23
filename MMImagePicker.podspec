@@ -1,11 +1,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "MMImagePicker"
-  s.version          = "2.4"
+  s.version          = "2.5"
   s.summary          = "A image picker used on iOS."
   s.homepage         = "https://github.com/dexianyinjiu/MMImagePicker"
   s.license          = 'MIT'
-  s.author           = { "得闲饮酒" => "1625977078@qq.com" }
+  s.author           = { "LEA" => "1625977078@qq.com" }
   s.source           = { :git => "https://github.com/dexianyinjiu/MMImagePicker.git", :tag => s.version}
   s.platform         = :ios, '7.0'
   s.requires_arc     = true

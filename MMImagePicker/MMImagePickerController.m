@@ -6,12 +6,13 @@
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "MMImagePickerController.h"
 #import "MMAssetCollectionController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
 #import "MMAlbumCell.h"
+#import "UIViewController+HUD.h"
 
-@interface MMImagePickerController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MMImagePickerController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<ALAssetsGroup *> *assetGroups;
@@ -24,15 +25,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"照片";
+    self.title = NSLocalizedString(@"照片", nil);
     self.view.backgroundColor = RGBColor(240.0, 240.0, 240.0, 1.0);
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(barButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", nil) target:self action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
     
     self.assetGroups = [[NSMutableArray alloc] init];
     
     //获取系统相册列表
-    [self showHUD:@"图库加载中"];
+    [self showHUD:NSLocalizedString(@"图库加载中", nil)];
     self.library = [[ALAssetsLibrary alloc] init];
     
     __weak typeof(self) weakSelf = self;
@@ -60,10 +61,10 @@
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
             UIAlertView *alterView = [[UIAlertView alloc] initWithTitle:nil
-                                                                message:@"请开启相册访问权限"
-                                                               delegate:nil
+                                                                message:NSLocalizedString(@"请开启相册访问权限", nil)
+                                                               delegate:self
                                                       cancelButtonTitle:nil
-                                                      otherButtonTitles:@"确定",nil];
+                                                      otherButtonTitles:NSLocalizedString(@"知道了", nil),nil];
             [alterView show];
         }
     }];
@@ -81,6 +82,12 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
         _tableView.tableFooterView = [UIView new];
+        
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
     }
     return _tableView;
 }
@@ -111,6 +118,11 @@
     return 0.1f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MMAlbumCell";
@@ -125,7 +137,7 @@
     NSString *groupPropertyName = [assetGroup valueForProperty:ALAssetsGroupPropertyName];
     NSUInteger nType = [[assetGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
     if (nType == ALAssetsGroupSavedPhotos) {
-        groupPropertyName = @"相机胶卷";
+        groupPropertyName = NSLocalizedString(@"相机胶卷", nil);
     }
     NSInteger count = [assetGroup numberOfAssets];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)",groupPropertyName, (long)count];
@@ -146,7 +158,14 @@
 #pragma mark - 跳转
 - (void)pushImagePickerByAssetGroup:(ALAssetsGroup *)assetGroup animated:(BOOL)animated
 {
+    NSString *groupPropertyName = [assetGroup valueForProperty:ALAssetsGroupPropertyName];
+    NSUInteger nType = [[assetGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
+    if (nType == ALAssetsGroupSavedPhotos) {
+        groupPropertyName = NSLocalizedString(@"相机胶卷", nil);
+    }
+    
     MMAssetCollectionController *imagePicker = [[MMAssetCollectionController alloc] init];
+    imagePicker.title = groupPropertyName;
     imagePicker.assetGroup = assetGroup;
     imagePicker.mainColor = self.mainColor;
     imagePicker.maximumNumberOfImage = self.maximumNumberOfImage;
@@ -171,6 +190,12 @@
         }
     }];
     [self.navigationController pushViewController:imagePicker animated:animated];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self barButtonItemAction:nil];
 }
 
 #pragma mark -

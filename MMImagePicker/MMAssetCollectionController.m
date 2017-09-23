@@ -43,10 +43,9 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"选取照片";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] target:self action:@selector(leftBarItemAction)];
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(rightBarItemAction)];
+    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", nil) target:self action:@selector(rightBarItemAction)];
 
     _isOrigin = NO;
     if (!_mainColor) {
@@ -101,6 +100,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = YES;
         [_collectionView registerClass:[MMAssetCell class] forCellWithReuseIdentifier:CellIdentifier];
+        
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
     }
     return _collectionView;
 }
@@ -120,26 +125,35 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView.layer addSublayer:layer];
         
         //子视图
-        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, kBottomHeight, kBottomHeight)];
+        NSString *title = NSLocalizedString(@"预览", nil);
+        CGFloat width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width;
+        //预览
+        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, width, kBottomHeight)];
         _previewBtn.tag = 100;
         [_previewBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
+        [_previewBtn setTitle:title forState:UIControlStateNormal];
         [_previewBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_previewBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_previewBtn];
         
-        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, 80, kBottomHeight)];
+        title = NSLocalizedString(@"原图", nil);
+        width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width;
+        //原图
+        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, width+30, kBottomHeight)];
         _originBtn.tag = 101;
         [_originBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_originBtn setTitle:@"原图" forState:UIControlStateNormal];
+        [_originBtn setTitle:title forState:UIControlStateNormal];
         [_originBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, 60)];
+        [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, width+10)];
         [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_mark")] forState:UIControlStateNormal];
         [_originBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [_originBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_originBtn];
         
-        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-70, (kBottomHeight-20)/2, 20, 20)];
+        title = NSLocalizedString(@"确定", nil);
+        width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width+10;
+        
+        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-(width+20), (kBottomHeight-20)/2, 20, 20)];
         _numberLab.backgroundColor = _mainColor;
         _numberLab.layer.cornerRadius = _numberLab.frame.size.height/2;
         _numberLab.layer.masksToBounds = YES;
@@ -150,10 +164,10 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView addSubview:_numberLab];
         _numberLab.hidden = YES;
         
-        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-60, 0, 60, kBottomHeight)];
+        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-width, 0, width, kBottomHeight)];
         _finishBtn.tag = 102;
         [_finishBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_finishBtn setTitle:@"确定" forState:UIControlStateNormal];
+        [_finishBtn setTitle:title forState:UIControlStateNormal];
         [_finishBtn setTitleColor:_mainColor forState:UIControlStateNormal];
         [_finishBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_finishBtn];
@@ -379,10 +393,10 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     
     //## 提醒
     if (([self.selectedAssetArray count] == _maximumNumberOfImage) && !mmAsset.isSelected) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"您最多可以添加%ld张图片！",(long)_maximumNumberOfImage]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ %ld %@",NSLocalizedString(@"最多可以添加", nil),(long)_maximumNumberOfImage,NSLocalizedString(@"张图片", nil)]
                                                         message:nil
                                                        delegate:nil
-                                              cancelButtonTitle:@"知道了"
+                                              cancelButtonTitle:NSLocalizedString(@"知道了", nil)
                                               otherButtonTitles:nil, nil];
         [alert show];
         return;
