@@ -33,10 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"图片裁剪", nil);
+    self.title = @"图片裁剪";
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] target:self action:@selector(leftBarItemAction)];
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:NSLocalizedString(@"确定", nil) target:self action:@selector(rightBarItemAction)];
+    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"确定" target:self action:@selector(rightBarItemAction)];
     
     //添加视图
     [self.view addSubview:self.imageView];

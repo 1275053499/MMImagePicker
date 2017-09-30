@@ -31,6 +31,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please open the album access</string>
+	<string>请开启照片权限</string>
 </dict>
 </plist>

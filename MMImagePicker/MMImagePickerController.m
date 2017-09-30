@@ -25,15 +25,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"照片", nil);
+    self.title = @"照片";
     self.view.backgroundColor = RGBColor(240.0, 240.0, 240.0, 1.0);
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:NSLocalizedString(@"取消", nil) target:self action:@selector(barButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
     
     self.assetGroups = [[NSMutableArray alloc] init];
     
     //获取系统相册列表
-    [self showHUD:NSLocalizedString(@"图库加载中", nil)];
+    [self showHUD:@"图库加载中"];
     self.library = [[ALAssetsLibrary alloc] init];
     
     __weak typeof(self) weakSelf = self;
@@ -61,10 +61,10 @@
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
             UIAlertView *alterView = [[UIAlertView alloc] initWithTitle:nil
-                                                                message:NSLocalizedString(@"请开启相册访问权限", nil)
+                                                                message:@"请开启相册访问权限"
                                                                delegate:self
                                                       cancelButtonTitle:nil
-                                                      otherButtonTitles:NSLocalizedString(@"知道了", nil),nil];
+                                                      otherButtonTitles:@"知道了",nil];
             [alterView show];
         }
     }];
@@ -82,12 +82,6 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
         _tableView.tableFooterView = [UIView new];
-        
-        if (@available(iOS 11.0, *)) {
-            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = NO;
-        }
     }
     return _tableView;
 }
@@ -137,7 +131,7 @@
     NSString *groupPropertyName = [assetGroup valueForProperty:ALAssetsGroupPropertyName];
     NSUInteger nType = [[assetGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
     if (nType == ALAssetsGroupSavedPhotos) {
-        groupPropertyName = NSLocalizedString(@"相机胶卷", nil);
+        groupPropertyName = @"相机胶卷";
     }
     NSInteger count = [assetGroup numberOfAssets];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)",groupPropertyName, (long)count];
@@ -161,7 +155,7 @@
     NSString *groupPropertyName = [assetGroup valueForProperty:ALAssetsGroupPropertyName];
     NSUInteger nType = [[assetGroup valueForProperty:ALAssetsGroupPropertyType] intValue];
     if (nType == ALAssetsGroupSavedPhotos) {
-        groupPropertyName = NSLocalizedString(@"相机胶卷", nil);
+        groupPropertyName = @"相机胶卷";
     }
     
     MMAssetCollectionController *imagePicker = [[MMAssetCollectionController alloc] init];
