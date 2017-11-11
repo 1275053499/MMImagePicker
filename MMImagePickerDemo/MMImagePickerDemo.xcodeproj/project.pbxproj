@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B0F1ECA1EF2353D00F77F06 /* MMImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */; };
+		8B68B7761FB69C8C00627618 /* MMImageAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B68B7751FB69C8C00627618 /* MMImageAssetController.m */; };
+		8B68B7781FB6A34A00627618 /* MMImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */; };
 		8B6A5EDC1E763C2600DD980B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDB1E763C2600DD980B /* main.m */; };
 		8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EDE1E763C2600DD980B /* AppDelegate.m */; };
 		8B6A5EE21E763C2600DD980B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE11E763C2600DD980B /* ViewController.m */; };
@@ -24,12 +25,13 @@
 		8B6A5F511E76A2CB00DD980B /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */; };
 		8B6A5F541E76A2F600DD980B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */; };
 		8B7EF7061EF0E31900C9317F /* MMImageCropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EF7051EF0E31900C9317F /* MMImageCropController.m */; };
-		8B7EF77F1EF1190F00C9317F /* MMAssetCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7EF77E1EF1190F00C9317F /* MMAssetCollectionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
-		8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MMImagePicker.bundle; sourceTree = "<group>"; };
+		8B68B7741FB69C8C00627618 /* MMImageAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageAssetController.h; sourceTree = "<group>"; };
+		8B68B7751FB69C8C00627618 /* MMImageAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageAssetController.m; sourceTree = "<group>"; };
+		8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MMImagePicker.bundle; path = ../../../../../lea/Desktop/Github/MMImagePicker/MMImagePicker/MMImagePicker.bundle; sourceTree = "<group>"; };
 		8B6A5ED71E763C2600DD980B /* MMImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6A5EDB1E763C2600DD980B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B6A5EDD1E763C2600DD980B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,8 +61,6 @@
 		8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B7EF7041EF0E31900C9317F /* MMImageCropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageCropController.h; sourceTree = "<group>"; };
 		8B7EF7051EF0E31900C9317F /* MMImageCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageCropController.m; sourceTree = "<group>"; };
-		8B7EF77D1EF1190F00C9317F /* MMAssetCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAssetCollectionController.h; sourceTree = "<group>"; };
-		8B7EF77E1EF1190F00C9317F /* MMAssetCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAssetCollectionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +119,12 @@
 		8B6A5EF11E763F3500DD980B /* MMImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */,
 				8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */,
 				8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */,
 				8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */,
-				8B7EF77D1EF1190F00C9317F /* MMAssetCollectionController.h */,
-				8B7EF77E1EF1190F00C9317F /* MMAssetCollectionController.m */,
+				8B68B7741FB69C8C00627618 /* MMImageAssetController.h */,
+				8B68B7751FB69C8C00627618 /* MMImageAssetController.m */,
 				8B6A5EFC1E763F3500DD980B /* MMImagePreviewController.h */,
 				8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */,
 				8B7EF7041EF0E31900C9317F /* MMImageCropController.h */,
@@ -140,7 +141,6 @@
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
 				8B6A5F4F1E76A2CB00DD980B /* UIViewController+HUD.h */,
 				8B6A5F501E76A2CB00DD980B /* UIViewController+HUD.m */,
-				8B0F1EC91EF2353D00F77F06 /* MMImagePicker.bundle */,
 			);
 			name = MMImagePicker;
 			path = ../../MMImagePicker;
@@ -207,7 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0F1ECA1EF2353D00F77F06 /* MMImagePicker.bundle in Resources */,
+				8B68B7781FB6A34A00627618 /* MMImagePicker.bundle in Resources */,
 				8B6A5F131E763F8600DD980B /* default_bar@2x.png in Resources */,
 				8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */,
 				8B6A5EE71E763C2600DD980B /* Assets.xcassets in Resources */,
@@ -227,10 +227,10 @@
 				8B6A5F091E763F3500DD980B /* MMBarButtonItem.m in Sources */,
 				8B7EF7061EF0E31900C9317F /* MMImageCropController.m in Sources */,
 				8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */,
-				8B7EF77F1EF1190F00C9317F /* MMAssetCollectionController.m in Sources */,
 				8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */,
 				8B6A5F511E76A2CB00DD980B /* UIViewController+HUD.m in Sources */,
 				8B6A5F541E76A2F600DD980B /* MBProgressHUD.m in Sources */,
+				8B68B7761FB69C8C00627618 /* MMImageAssetController.m in Sources */,
 				8B6A5EDC1E763C2600DD980B /* main.m in Sources */,
 				8B6A5F081E763F3500DD980B /* MMAssetCell.m in Sources */,
 				8B6A5F061E763F3500DD980B /* MMAlbumCell.m in Sources */,

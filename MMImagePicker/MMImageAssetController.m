@@ -1,12 +1,12 @@
 //
-//  MMAssetCollectionController.m
+//  MMImageAssetController.m
 //  MMImagePicker
 //
-//  Created by LEA on 2017/6/14.
+//  Created by LEA on 2017/3/2.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
-#import "MMAssetCollectionController.h"
+#import "MMImageAssetController.h"
 #import "MMImagePreviewController.h"
 #import "MMImageCropController.h"
 #import "MMImagePickerComponent.h"
@@ -17,10 +17,10 @@
 
 @end
 
-//#### MMAssetCollectionController
+//#### MMImageAssetController
 static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 
-@interface MMAssetCollectionController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface MMImageAssetController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) ALAssetsLibrary *library;
 @property (nonatomic,strong) UICollectionView *collectionView;
@@ -33,12 +33,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 @property (nonatomic,strong) UIButton *finishBtn;
 @property (nonatomic,strong) UILabel *numberLab;
 
-//是否回传原图[可用于控制图片压系数]
+// 是否回传原图[可用于控制图片压系数]
 @property (nonatomic, assign) BOOL isOrigin;
 
 @end
 
-@implementation MMAssetCollectionController
+@implementation MMImageAssetController
 
 - (void)viewDidLoad
 {
@@ -46,7 +46,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[MMBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] target:self action:@selector(leftBarItemAction)];
     self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(rightBarItemAction)];
-
+    
+    // 标题
+    NSString *groupPropertyName = [self.assetGroup valueForProperty:ALAssetsGroupPropertyName];
+    self.title = groupPropertyName;
+    
+    // 初始化
     _isOrigin = NO;
     if (!_mainColor) {
         _mainColor = kMainColor;
@@ -61,7 +66,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     }
     [self getPhotoAlbum];
     
-    //是否显示原图选项
+    // 是否显示原图选项
     _originBtn.hidden = !self.showOriginImageOption;
 }
 
@@ -112,42 +117,35 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _bottomView.userInteractionEnabled = NO;
         _bottomView.alpha = 0.5;
         
-        //上边框
+        // 上边框
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(0, 0, _bottomView.width, 0.5);
         layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
         [_bottomView.layer addSublayer:layer];
-        
-        //子视图
-        NSString *title = @"预览";
-        CGFloat width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width;
-        //预览
-        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, width, kBottomHeight)];
+    
+        // 预览
+        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 50, kBottomHeight)];
         _previewBtn.tag = 100;
         [_previewBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_previewBtn setTitle:title forState:UIControlStateNormal];
+        [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
         [_previewBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_previewBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_previewBtn];
         
-        title = @"原图";
-        width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width;
-        //原图
-        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, width+30, kBottomHeight)];
+        // 原图
+        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, 90, kBottomHeight)];
         _originBtn.tag = 101;
         [_originBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_originBtn setTitle:title forState:UIControlStateNormal];
+        [_originBtn setTitle:@"原图" forState:UIControlStateNormal];
         [_originBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, width+10)];
+        [_originBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+        [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, 70)];
         [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_mark")] forState:UIControlStateNormal];
         [_originBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [_originBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_originBtn];
         
-        title = @"确定";
-        width = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]}].width+10;
-        
-        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-(width+20), (kBottomHeight-20)/2, 20, 20)];
+        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-70, (kBottomHeight-20)/2, 20, 20)];
         _numberLab.backgroundColor = _mainColor;
         _numberLab.layer.cornerRadius = _numberLab.frame.size.height/2;
         _numberLab.layer.masksToBounds = YES;
@@ -158,10 +156,10 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView addSubview:_numberLab];
         _numberLab.hidden = YES;
         
-        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-width, 0, width, kBottomHeight)];
+        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-60, 0, 60, kBottomHeight)];
         _finishBtn.tag = 102;
         [_finishBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
-        [_finishBtn setTitle:title forState:UIControlStateNormal];
+        [_finishBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_finishBtn setTitleColor:_mainColor forState:UIControlStateNormal];
         [_finishBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_finishBtn];
