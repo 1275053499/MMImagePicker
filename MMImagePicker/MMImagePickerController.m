@@ -27,7 +27,10 @@
     [super viewDidLoad];
     self.title = @"照片";
     self.view.backgroundColor = RGBColor(240.0, 240.0, 240.0, 1.0);
-    self.navigationItem.rightBarButtonItem = [[MMBarButtonItem alloc] initWithTitle:@"取消" target:self action:@selector(barButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
     
     self.assetGroups = [[NSMutableArray alloc] init];

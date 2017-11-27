@@ -17,7 +17,6 @@
 		8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE81E763C2600DD980B /* LaunchScreen.storyboard */; };
 		8B6A5F061E763F3500DD980B /* MMAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */; };
 		8B6A5F081E763F3500DD980B /* MMAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF71E763F3500DD980B /* MMAssetCell.m */; };
-		8B6A5F091E763F3500DD980B /* MMBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF91E763F3500DD980B /* MMBarButtonItem.m */; };
 		8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */; };
 		8B6A5F0B1E763F3500DD980B /* MMImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */; };
 		8B6A5F111E763F3500DD980B /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F051E763F3500DD980B /* UIView+Geometry.m */; };
@@ -46,8 +45,6 @@
 		8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAlbumCell.m; sourceTree = "<group>"; };
 		8B6A5EF61E763F3500DD980B /* MMAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAssetCell.h; sourceTree = "<group>"; };
 		8B6A5EF71E763F3500DD980B /* MMAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAssetCell.m; sourceTree = "<group>"; };
-		8B6A5EF81E763F3500DD980B /* MMBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMBarButtonItem.h; sourceTree = "<group>"; };
-		8B6A5EF91E763F3500DD980B /* MMBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMBarButtonItem.m; sourceTree = "<group>"; };
 		8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerController.h; sourceTree = "<group>"; };
 		8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePickerController.m; sourceTree = "<group>"; };
 		8B6A5EFC1E763F3500DD980B /* MMImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewController.h; sourceTree = "<group>"; };
@@ -133,8 +130,6 @@
 				8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */,
 				8B6A5EF61E763F3500DD980B /* MMAssetCell.h */,
 				8B6A5EF71E763F3500DD980B /* MMAssetCell.m */,
-				8B6A5EF81E763F3500DD980B /* MMBarButtonItem.h */,
-				8B6A5EF91E763F3500DD980B /* MMBarButtonItem.m */,
 				8B6A5F521E76A2F600DD980B /* MBProgressHUD.h */,
 				8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */,
 				8B6A5F041E763F3500DD980B /* UIView+Geometry.h */,
@@ -224,7 +219,6 @@
 			files = (
 				8B6A5F111E763F3500DD980B /* UIView+Geometry.m in Sources */,
 				8B6A5EE21E763C2600DD980B /* ViewController.m in Sources */,
-				8B6A5F091E763F3500DD980B /* MMBarButtonItem.m in Sources */,
 				8B7EF7061EF0E31900C9317F /* MMImageCropController.m in Sources */,
 				8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */,
 				8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */,

@@ -1,6 +1,6 @@
-# MMImagePicker
+# MMImagePickerCheeryLau
 
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/dexianyinjiu/MMImagePicker/master/LICENSE)&nbsp;
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/CheeryLau/MMImagePicker/master/LICENSE)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/v/MMImagePicker.svg?style=flat)](http://cocoapods.org/pods/MMImagePicker)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/MMImagePicker.svg?style=flat)](http://cocoapods.org/pods/MMImagePicker)&nbsp;
 
