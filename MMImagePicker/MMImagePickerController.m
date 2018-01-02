@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     self.title = @"照片";
-    self.view.backgroundColor = RGBColor(240.0, 240.0, 240.0, 1.0);
+    self.view.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
@@ -87,6 +87,12 @@
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
         _tableView.tableFooterView = [UIView new];
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "MMAssetCell.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 
 @interface MMAssetCell ()
 

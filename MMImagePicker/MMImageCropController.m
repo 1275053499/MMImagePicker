@@ -7,7 +7,7 @@
 //
 
 #import "MMImageCropController.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 
 @interface MMImageCropController ()
 
@@ -59,7 +59,7 @@
         _imageCropSize = CGSizeMake(self.view.width, self.view.width);
     }
     _limitRatio = 3.f;
-    _cropFrame = CGRectMake(0, (self.view.height-64-_imageCropSize.height)/2, _imageCropSize.width, _imageCropSize.height);
+    _cropFrame = CGRectMake(0, (self.view.height-kTopBarHeight-_imageCropSize.height)/2, _imageCropSize.width, _imageCropSize.height);
     CGFloat oriWidth = _cropFrame.size.width;
     CGFloat oriHeight = oriWidth * _originalImage.size.height / _originalImage.size.width;
     CGFloat oriX = _cropFrame.origin.x + (_cropFrame.size.width - oriWidth) / 2;

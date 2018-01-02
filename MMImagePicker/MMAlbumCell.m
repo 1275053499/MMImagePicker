@@ -7,7 +7,7 @@
 //
 
 #import "MMAlbumCell.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 
 @implementation MMAlbumCell
 

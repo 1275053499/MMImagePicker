@@ -7,7 +7,7 @@
 //
 
 #import "MMImagePreviewController.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 
 @interface MMImagePreviewController ()<UIScrollViewDelegate>
 
@@ -54,20 +54,29 @@
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
+    if (@available(iOS 11.0, *)) {
+        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self.view addSubview:_scrollView];
     
-    _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
+    CGFloat top = 20;
+    CGFloat topH = 64;
+    if (kDeviceIsIphoneX) {
+        top = kStatusHeight;
+        topH = kTopBarHeight;
+    }
+    _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, topH)];
     _titleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     [self.view addSubview:_titleView];
-    
+
     UIImage *image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")];
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, _titleView.height, _titleView.height)];
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, top, kNavHeight, kNavHeight)];
     [backBtn setImage:image forState:UIControlStateNormal];
-    [backBtn setImageEdgeInsets:UIEdgeInsetsMake((_titleView.height-image.size.height)/2, 0, (_titleView.height-image.size.height)/2, 0)];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake((kNavHeight-image.size.height)/2, 0, (kNavHeight-image.size.height)/2, 0)];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:backBtn];
     
-    _titleLab = [[UILabel alloc] initWithFrame:CGRectMake((_titleView.width-200)/2, 0, 200, _titleView.height)];
+    _titleLab = [[UILabel alloc] initWithFrame:CGRectMake((_titleView.width-200)/2, top, 200, kNavHeight)];
     _titleLab.font = [UIFont boldSystemFontOfSize:19.0];
     _titleLab.textAlignment = NSTextAlignmentCenter;
     _titleLab.textColor = [UIColor whiteColor];
@@ -75,9 +84,9 @@
     [_titleView addSubview:_titleLab];
     
     image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_delete")];
-    UIButton *delBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width-_titleView.height, 0, _titleView.height, _titleView.height)];
+    UIButton *delBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width-kNavHeight, top, kNavHeight, kNavHeight)];
     [delBtn setImage:image forState:UIControlStateNormal];
-    [delBtn setImageEdgeInsets:UIEdgeInsetsMake((_titleView.height-image.size.height)/2, 0, (_titleView.height-image.size.height)/2, 0)];
+    [delBtn setImageEdgeInsets:UIEdgeInsetsMake((kNavHeight-image.size.height)/2, 0, (kNavHeight-image.size.height)/2, 0)];
     [delBtn addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:delBtn];
     

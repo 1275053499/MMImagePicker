@@ -27,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerComponent.h; sourceTree = "<group>"; };
 		8B68B7741FB69C8C00627618 /* MMImageAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageAssetController.h; sourceTree = "<group>"; };
 		8B68B7751FB69C8C00627618 /* MMImageAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageAssetController.m; sourceTree = "<group>"; };
 		8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MMImagePicker.bundle; path = ../../../../../lea/Desktop/Github/MMImagePicker/MMImagePicker/MMImagePicker.bundle; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		8B6A5F531E76A2F600DD980B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8B7EF7041EF0E31900C9317F /* MMImageCropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageCropController.h; sourceTree = "<group>"; };
 		8B7EF7051EF0E31900C9317F /* MMImageCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageCropController.m; sourceTree = "<group>"; };
+		8BA13CB41FFB27F800C3A425 /* MMImagePickerConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMImagePickerConst.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */,
-				8B0F1EC81EF2222A00F77F06 /* MMImagePickerComponent.h */,
+				8BA13CB41FFB27F800C3A425 /* MMImagePickerConst.h */,
 				8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */,
 				8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */,
 				8B68B7741FB69C8C00627618 /* MMImageAssetController.h */,

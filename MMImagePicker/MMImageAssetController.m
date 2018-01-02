@@ -9,7 +9,7 @@
 #import "MMImageAssetController.h"
 #import "MMImagePreviewController.h"
 #import "MMImageCropController.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 #import "MMAssetCell.h"
 
 //#### MMALAsset
@@ -68,7 +68,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     }
     [self.view addSubview:self.collectionView];
     if (!_cropImageOption && !_singleImageOption) {
-        self.collectionView.height = self.view.height-64-kBottomHeight;
+        self.collectionView.height = self.view.height-kTopBarHeight-kBottomHeight;
         [self.view addSubview:self.bottomView];
     }
     [self getPhotoAlbum];
@@ -106,12 +106,15 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-64) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-kTopBarHeight) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = YES;
         [_collectionView registerClass:[MMAssetCell class] forCellWithReuseIdentifier:CellIdentifier];
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _collectionView;
 }
@@ -124,6 +127,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _bottomView.userInteractionEnabled = NO;
         _bottomView.alpha = 0.5;
         
+        CGFloat btHeight = 44.0f;
         // 上边框
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(0, 0, _bottomView.width, 0.5);
@@ -131,7 +135,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView.layer addSublayer:layer];
     
         // 预览
-        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 50, kBottomHeight)];
+        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, 50, btHeight)];
         _previewBtn.tag = 100;
         [_previewBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
         [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
@@ -140,7 +144,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView addSubview:_previewBtn];
         
         // 原图
-        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, 90, kBottomHeight)];
+        _originBtn = [[UIButton alloc] initWithFrame:CGRectMake(_previewBtn.right+10, 0, 90, btHeight)];
         _originBtn.tag = 101;
         [_originBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
         [_originBtn setTitle:@"原图" forState:UIControlStateNormal];
@@ -152,7 +156,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_originBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:_originBtn];
         
-        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-70, (kBottomHeight-20)/2, 20, 20)];
+        _numberLab = [[UILabel alloc] initWithFrame:CGRectMake(self.view.width-70, (btHeight-20)/2, 20, 20)];
         _numberLab.backgroundColor = _mainColor;
         _numberLab.layer.cornerRadius = _numberLab.frame.size.height/2;
         _numberLab.layer.masksToBounds = YES;
@@ -163,7 +167,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_bottomView addSubview:_numberLab];
         _numberLab.hidden = YES;
         
-        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-60, 0, 60, kBottomHeight)];
+        _finishBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-60, 0, 60, btHeight)];
         _finishBtn.tag = 102;
         [_finishBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
         [_finishBtn setTitle:@"确定" forState:UIControlStateNormal];

@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MMImageCropController.h"
-#import "MMImagePickerComponent.h"
+#import "MMImagePickerConst.h"
 
 @protocol MMImagePickerDelegate;
 @interface MMImagePickerController : UIViewController
