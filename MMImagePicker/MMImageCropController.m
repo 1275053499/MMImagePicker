@@ -35,26 +35,20 @@
     [super viewDidLoad];
     self.title = @"图片裁剪";
     self.view.backgroundColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(leftBarItemAction)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(rightBarItemAction)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarItemAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItemAction)];
     
-    //添加视图
+    // 添加视图
     [self.view addSubview:self.imageView];
     [self.view addSubview:self.overlayView];
     
-    //添加手势
+    // 添加手势
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureAction:)];
     [self.view addGestureRecognizer:pinch];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
     [self.view addGestureRecognizer:pan];
     
-    //赋值
+    // 赋值
     if (_imageCropSize.width * _imageCropSize.height == 0) {
         _imageCropSize = CGSizeMake(self.view.width, self.view.width);
     }
@@ -70,7 +64,7 @@
     self.imageView.frame = _oldFrame;
     self.imageView.image = _originalImage;
 
-    //裁剪区
+    // 裁剪区
     [self overlayClipping];
 }
 
@@ -117,7 +111,7 @@
 {
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     CGMutablePathRef path = CGPathCreateMutable();
-    //图片高度与截取框高度保持一致
+    // 图片高度与截取框高度保持一致
     if(_oldFrame.size.height >=  _cropFrame.size.height) {
         CGPathAddRect(path, nil, CGRectMake(0, 0, _cropFrame.origin.x, self.overlayView.height));
         CGPathAddRect(path, nil, CGRectMake(_cropFrame.origin.x + _cropFrame.size.width, 0, self.overlayView.width - _cropFrame.origin.x - _cropFrame.size.width, self.overlayView.height));
@@ -138,7 +132,7 @@
 #pragma mark - 手势处理
 - (void)pinchGestureAction:(UIPinchGestureRecognizer *)pinch
 {
-    //缩放
+    // 缩放
     UIView *view = self.imageView;
     if (pinch.state == UIGestureRecognizerStateBegan || pinch.state == UIGestureRecognizerStateChanged)
     {
@@ -162,7 +156,7 @@
 
 - (void)panGestureAction:(UIPanGestureRecognizer *)pan
 {
-    //拖动
+    // 拖动
     UIView *view = self.imageView;
     if (pan.state == UIGestureRecognizerStateBegan || pan.state == UIGestureRecognizerStateChanged)
     {
@@ -241,7 +235,7 @@
     return smallImage;
 }
 
-#pragma mark - 内存
+#pragma mark -
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

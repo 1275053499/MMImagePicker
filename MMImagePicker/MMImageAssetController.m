@@ -40,39 +40,39 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 
 @implementation MMImageAssetController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _isOrigin = NO;
+        _mainColor = kMainColor;
+        _maximumNumberOfImage = 9;
+    }
+    return self;
+}
+
+#pragma mark - 生命周期
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(leftBarItemAction)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(rightBarItemAction)];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarItemAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItemAction)];
     // 标题
     NSString *groupPropertyName = [self.assetGroup valueForProperty:ALAssetsGroupPropertyName];
     self.title = groupPropertyName;
-    
-    // 初始化
-    _isOrigin = NO;
-    if (!_mainColor) {
-        _mainColor = kMainColor;
-    }
-    if (_maximumNumberOfImage == 0) {
-        _maximumNumberOfImage = 9;
-    }
+    // 添加视图
     [self.view addSubview:self.collectionView];
     if (!_cropImageOption && !_singleImageOption) {
         self.collectionView.height = self.view.height-kTopBarHeight-kBottomHeight;
         [self.view addSubview:self.bottomView];
+    } else {
+        if (kDeviceIsIphoneX) {
+            _collectionView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
+            _collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
+        }
     }
     [self getPhotoAlbum];
-    
     // 是否显示原图选项
     _originBtn.hidden = !self.showOriginImageOption;
 }
@@ -82,7 +82,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 {
     self.mmAssetArray = [[NSMutableArray alloc] init];
     self.selectedAssetArray = [[NSMutableArray alloc] init];
-    
     __weak typeof(self) weakSelf = self;
     [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
      {
@@ -90,9 +89,8 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
              [weakSelf.collectionView reloadData];
              return;
          }
-         //只处理图片[忽略视频]
-         if([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto])
-         {
+         // 只处理图片[忽略视频]
+         if([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
              MMALAsset *mmAsset = [[MMALAsset alloc] init];
              mmAsset.asset = result;
              mmAsset.isSelected = NO;
@@ -106,7 +104,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-kTopBarHeight) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-kTopBarHeight) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

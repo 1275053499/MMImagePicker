@@ -84,6 +84,10 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        if (kDeviceIsIphoneX) {
+            _tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
+            _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
+        }
     }
     return _tableView;
 }
@@ -148,7 +152,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     //跳转
     ALAssetsGroup *assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
     [self pushImagePickerByAssetGroup:assetGroup animated:YES];
@@ -169,13 +172,13 @@
     __weak typeof(self) weakSelf = self;
     [controller setCompletion:^(NSArray *info, BOOL isOrigin, BOOL isCancel){
         weakSelf.isOrigin = isOrigin;
-        if (isCancel) { //取消
+        if (isCancel) { // 取消
             if ([weakSelf.delegate respondsToSelector:@selector(mmImagePickerControllerDidCancel:)]) {
                 [weakSelf.delegate mmImagePickerControllerDidCancel:weakSelf];
             } else {
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }
-        } else { //确认选择
+        } else { // 确认选择
             if ([weakSelf.delegate respondsToSelector:@selector(mmImagePickerController:didFinishPickingMediaWithInfo:)]) {
                 [weakSelf.delegate mmImagePickerController:weakSelf didFinishPickingMediaWithInfo:info];
             }
