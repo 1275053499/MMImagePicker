@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MMImagePicker"
-  s.version          = "3.0"
+  s.version          = "3.1"
   s.summary          = "A image picker used on iOS."
   s.homepage         = "https://github.com/CheeryLau/MMImagePicker"
   s.license          = 'MIT'
