@@ -9,7 +9,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MMImagePickerController.h"
 #import "MMImageAssetController.h"
-#import "UIViewController+HUD.h"
 #import "MMAlbumCell.h"
 
 @interface MMImagePickerController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
@@ -27,28 +26,21 @@
     [super viewDidLoad];
     self.title = @"照片";
     self.view.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(barButtonItemAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
     
     self.assetGroups = [[NSMutableArray alloc] init];
     
     // 获取系统相册列表
-    [self showHUD:@"图库加载中"];
     self.library = [[ALAssetsLibrary alloc] init];
-    
     __weak typeof(self) weakSelf = self;
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         // 为空时，枚举完成
         if (!group) {
-            [weakSelf hideHUD];
             [weakSelf.tableView reloadData];
             [weakSelf pushImagePickerByAssetGroup:[weakSelf.assetGroups objectAtIndex:0] animated:NO];
             return ;
         }
-     
         // 剔除空相册
         NSInteger count = [group numberOfAssets];
         if (count) {
@@ -60,7 +52,6 @@
             }
         }
     } failureBlock:^(NSError *error) {
-        [weakSelf hideHUD];
         //无权限
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){

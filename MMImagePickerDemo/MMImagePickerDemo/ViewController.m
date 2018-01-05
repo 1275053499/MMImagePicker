@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "MMImagePickerController.h"
-#import "UIViewController+HUD.h"
 
 @interface ViewController () <MMImagePickerDelegate>
 {
@@ -60,7 +59,6 @@
 #pragma mark - 代理
 - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
-    [picker showHUD:@"图片加载中"];
     [imageArray removeAllObjects];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (int i = 0; i < [info count]; i ++)
@@ -79,7 +77,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self loadImageListView];
             [picker dismissViewControllerAnimated:YES completion:nil];
-            [picker hideHUD];
         });
     });
 }
