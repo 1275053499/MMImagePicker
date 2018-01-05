@@ -45,6 +45,9 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     self = [super init];
     if (self) {
         _isOrigin = NO;
+        _cropImageOption = NO;
+        _singleImageOption = NO;
+        _showOriginImageOption = NO;
         _mainColor = kMainColor;
         _maximumNumberOfImage = 9;
     }

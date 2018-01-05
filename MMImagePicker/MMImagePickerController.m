@@ -21,6 +21,20 @@
 
 @implementation MMImagePickerController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _isOrigin = NO;
+        _cropImageOption = NO;
+        _singleImageOption = NO;
+        _showOriginImageOption = NO;
+        _mainColor = kMainColor;
+        _maximumNumberOfImage = 9;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
