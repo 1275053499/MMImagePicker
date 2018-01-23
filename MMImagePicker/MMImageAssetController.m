@@ -113,9 +113,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = YES;
         [_collectionView registerClass:[MMAssetCell class] forCellWithReuseIdentifier:CellIdentifier];
-        if (@available(iOS 11.0, *)) {
-            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
     }
     return _collectionView;
 }
