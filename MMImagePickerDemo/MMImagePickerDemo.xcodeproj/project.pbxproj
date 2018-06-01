@@ -15,8 +15,6 @@
 		8B6A5EE51E763C2600DD980B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE31E763C2600DD980B /* Main.storyboard */; };
 		8B6A5EE71E763C2600DD980B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE61E763C2600DD980B /* Assets.xcassets */; };
 		8B6A5EEA1E763C2600DD980B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A5EE81E763C2600DD980B /* LaunchScreen.storyboard */; };
-		8B6A5F061E763F3500DD980B /* MMAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */; };
-		8B6A5F081E763F3500DD980B /* MMAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EF71E763F3500DD980B /* MMAssetCell.m */; };
 		8B6A5F0A1E763F3500DD980B /* MMImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */; };
 		8B6A5F0B1E763F3500DD980B /* MMImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */; };
 		8B6A5F111E763F3500DD980B /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A5F051E763F3500DD980B /* UIView+Geometry.m */; };
@@ -38,10 +36,6 @@
 		8B6A5EE61E763C2600DD980B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B6A5EE91E763C2600DD980B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B6A5EEB1E763C2600DD980B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B6A5EF21E763F3500DD980B /* MMAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAlbumCell.h; sourceTree = "<group>"; };
-		8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAlbumCell.m; sourceTree = "<group>"; };
-		8B6A5EF61E763F3500DD980B /* MMAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAssetCell.h; sourceTree = "<group>"; };
-		8B6A5EF71E763F3500DD980B /* MMAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAssetCell.m; sourceTree = "<group>"; };
 		8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePickerController.h; sourceTree = "<group>"; };
 		8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePickerController.m; sourceTree = "<group>"; };
 		8B6A5EFC1E763F3500DD980B /* MMImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewController.h; sourceTree = "<group>"; };
@@ -110,7 +104,6 @@
 		8B6A5EF11E763F3500DD980B /* MMImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */,
 				8BA13CB41FFB27F800C3A425 /* MMImagePickerConst.h */,
 				8B6A5EFA1E763F3500DD980B /* MMImagePickerController.h */,
 				8B6A5EFB1E763F3500DD980B /* MMImagePickerController.m */,
@@ -120,12 +113,9 @@
 				8B6A5EFD1E763F3500DD980B /* MMImagePreviewController.m */,
 				8B7EF7041EF0E31900C9317F /* MMImageCropController.h */,
 				8B7EF7051EF0E31900C9317F /* MMImageCropController.m */,
-				8B6A5EF21E763F3500DD980B /* MMAlbumCell.h */,
-				8B6A5EF31E763F3500DD980B /* MMAlbumCell.m */,
-				8B6A5EF61E763F3500DD980B /* MMAssetCell.h */,
-				8B6A5EF71E763F3500DD980B /* MMAssetCell.m */,
 				8B6A5F041E763F3500DD980B /* UIView+Geometry.h */,
 				8B6A5F051E763F3500DD980B /* UIView+Geometry.m */,
+				8B68B7771FB6A34A00627618 /* MMImagePicker.bundle */,
 			);
 			name = MMImagePicker;
 			path = ../../MMImagePicker;
@@ -213,8 +203,6 @@
 				8B6A5EDF1E763C2600DD980B /* AppDelegate.m in Sources */,
 				8B68B7761FB69C8C00627618 /* MMImageAssetController.m in Sources */,
 				8B6A5EDC1E763C2600DD980B /* main.m in Sources */,
-				8B6A5F081E763F3500DD980B /* MMAssetCell.m in Sources */,
-				8B6A5F061E763F3500DD980B /* MMAlbumCell.m in Sources */,
 				8B6A5F0B1E763F3500DD980B /* MMImagePreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

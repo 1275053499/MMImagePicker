@@ -47,6 +47,7 @@
 #pragma mark - 设置UI
 - (void)setUpUI
 {
+    // 滚动视图
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.delegate = self;
     _scrollView.scrollEnabled = YES;
@@ -54,6 +55,9 @@
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
+    if (@available(iOS 11.0, *)) {
+        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self.view addSubview:_scrollView];
     
     CGFloat top = 20;
@@ -65,34 +69,32 @@
     _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, topH)];
     _titleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     [self.view addSubview:_titleView];
-
+    // 返回按钮
     UIImage *image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")];
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, top, kNavHeight, kNavHeight)];
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn setImageEdgeInsets:UIEdgeInsetsMake((kNavHeight-image.size.height)/2, 0, (kNavHeight-image.size.height)/2, 0)];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:backBtn];
-    
+    // 顺序Label
     _titleLab = [[UILabel alloc] initWithFrame:CGRectMake((_titleView.width-200)/2, top, 200, kNavHeight)];
     _titleLab.font = [UIFont boldSystemFontOfSize:19.0];
     _titleLab.textAlignment = NSTextAlignmentCenter;
     _titleLab.textColor = [UIColor whiteColor];
     _titleLab.text = [NSString stringWithFormat:@"1/%d",(int)[self.assetArray count]];
     [_titleView addSubview:_titleLab];
-    
+    // 删除按钮
     image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_delete")];
     UIButton *delBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width-kNavHeight, top, kNavHeight, kNavHeight)];
     [delBtn setImage:image forState:UIControlStateNormal];
     [delBtn setImageEdgeInsets:UIEdgeInsetsMake((kNavHeight-image.size.height)/2, 0, (kNavHeight-image.size.height)/2, 0)];
     [delBtn addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:delBtn];
-    
-    //双击
+    // 双击
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGestureCallback:)];
     doubleTap.numberOfTapsRequired = 2;
     [_scrollView addGestureRecognizer:doubleTap];
-    
-    //单击
+    // 单击
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCallback:)];
     [singleTap requireGestureRecognizerToFail:doubleTap];
     [_scrollView addGestureRecognizer:singleTap];
@@ -155,12 +157,11 @@
 
 - (void)loadImage
 {
-    for (UIView *v in [_scrollView subviews]) {
-        [v removeFromSuperview];
-    }
-    CGRect workingFrame = _scrollView.frame;
-    workingFrame.origin.x = 0;
-    for (int i = 0; i < [self.assetArray count]; i ++)
+    // 移除
+    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    // 重新添加
+    NSInteger count = [self.assetArray count];
+    for (int i = 0; i < count; i ++)
     {
         ALAsset *asset = [self.assetArray objectAtIndex:i];
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
@@ -175,8 +176,8 @@
         imageView.contentScaleFactor = [[UIScreen mainScreen] scale];
         imageView.backgroundColor = [UIColor clearColor];
         
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(workingFrame.origin.x, 0, self.view.width, self.view.height)];
-        scrollView.contentSize = CGSizeMake(self.view.width, workingFrame.size.height);
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_scrollView.width * i, 0, _scrollView.width, _scrollView.height)];
+        scrollView.contentSize = CGSizeMake(scrollView.width, scrollView.height);
         scrollView.minimumZoomScale = 1.0;
         scrollView.delegate = self;
         scrollView.showsHorizontalScrollIndicator = NO;
@@ -197,10 +198,9 @@
         }
         
         [_scrollView addSubview:scrollView];
-        workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
     }
     [_scrollView setPagingEnabled:YES];
-    [_scrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+    [_scrollView setContentSize:CGSizeMake(_scrollView.width * count, _scrollView.height)];
 }
 
 #pragma mark - UIScrollViewDelegate

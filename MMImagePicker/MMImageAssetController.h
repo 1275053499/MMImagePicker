@@ -11,17 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 
-//#### MMALAsset
-#pragma mark - MMALAsset
-
-@interface MMALAsset : NSObject
-
-@property (nonatomic,strong) ALAsset *asset;
-@property (nonatomic,assign) BOOL isSelected;
-
-@end
-
-//### MMImageAssetController
+#pragma mark - ################## MMImageAssetController
 @interface MMImageAssetController : UIViewController
 
 // 所选相册
@@ -40,5 +30,22 @@
 @property (nonatomic, assign) NSInteger maximumNumberOfImage;
 // 选择回传[isOrigin:是否回传原图[可用于控制图片压系数]]
 @property (nonatomic,copy) void(^completion)(NSArray *info,BOOL isOrigin, BOOL isCancel);
+
+@end
+
+
+#pragma mark - ################## MMALAsset
+@interface MMALAsset : NSObject
+
+@property (nonatomic,strong) ALAsset *asset;
+@property (nonatomic,assign) BOOL isSelected;
+
+@end
+
+
+#pragma mark - ################## MMAssetCell
+@interface MMAssetCell : UICollectionViewCell
+
+@property (nonatomic,strong) UIImage *image;
 
 @end

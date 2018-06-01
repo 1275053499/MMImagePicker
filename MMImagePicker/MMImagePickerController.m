@@ -9,8 +9,8 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MMImagePickerController.h"
 #import "MMImageAssetController.h"
-#import "MMAlbumCell.h"
 
+#pragma mark - ################## MMImagePickerController
 @interface MMImagePickerController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -42,10 +42,8 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(barButtonItemAction:)];
     [self.view addSubview:self.tableView];
-    
-    self.assetGroups = [[NSMutableArray alloc] init];
-    
     // 获取系统相册列表
+    self.assetGroups = [[NSMutableArray alloc] init];
     self.library = [[ALAssetsLibrary alloc] init];
     __weak typeof(self) weakSelf = self;
     [self.library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -69,15 +67,14 @@
         //无权限
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
         if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
-            UIAlertView *alterView = [[UIAlertView alloc] initWithTitle:nil
-                                                                message:@"请开启相册访问权限"
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles:@"知道了",nil];
-            [alterView show];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"请在设置>隐私>照片中开启权限"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"知道了"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
         }
     }];
-    
 }
 
 #pragma mark - getter
@@ -89,18 +86,14 @@
         _tableView.dataSource = self;
         _tableView.rowHeight = 60.0f;
         _tableView.showsHorizontalScrollIndicator = NO;
-        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [UIView new];
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
-        if (kDeviceIsIphoneX) {
-            _tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
-            _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
         }
     }
     return _tableView;
@@ -207,11 +200,23 @@
     [self barButtonItemAction:nil];
 }
 
-#pragma mark -
+#pragma mark - 内存警告
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
+@end
+
+#pragma mark - ################## MMAlbumCell
+@implementation MMAlbumCell
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.imageView setOrigin:CGPointMake(0, 0)];
+    [self.textLabel setLeft:self.imageView.right + 10];
+    [self setSeparatorInset:UIEdgeInsetsMake(0, self.imageView.width, 0, 0)];
+}
 
 @end

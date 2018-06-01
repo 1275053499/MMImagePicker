@@ -37,17 +37,14 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_back")] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarItemAction)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarItemAction)];
-    
     // 添加视图
     [self.view addSubview:self.imageView];
     [self.view addSubview:self.overlayView];
-    
     // 添加手势
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureAction:)];
     [self.view addGestureRecognizer:pinch];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
     [self.view addGestureRecognizer:pan];
-    
     // 赋值
     if (_imageCropSize.width * _imageCropSize.height == 0) {
         _imageCropSize = CGSizeMake(self.view.width, self.view.width);
@@ -63,7 +60,6 @@
     _largeFrame = CGRectMake(0, 0, _limitRatio * _oldFrame.size.width, _limitRatio * _oldFrame.size.height);
     self.imageView.frame = _oldFrame;
     self.imageView.image = _originalImage;
-
     // 裁剪区
     [self overlayClipping];
 }
@@ -117,7 +113,7 @@
         CGPathAddRect(path, nil, CGRectMake(_cropFrame.origin.x + _cropFrame.size.width, 0, self.overlayView.width - _cropFrame.origin.x - _cropFrame.size.width, self.overlayView.height));
         CGPathAddRect(path, nil, CGRectMake(0, 0, self.overlayView.width, _cropFrame.origin.y));
         CGPathAddRect(path, nil, CGRectMake(0, _cropFrame.origin.y + _cropFrame.size.height, self.overlayView.width, self.overlayView.height - _cropFrame.origin.y + _cropFrame.size.height));
-    } else { //重新赋值
+    } else { // 重新赋值
         _cropFrame = _oldFrame;
         CGPathAddRect(path, nil, CGRectMake(0, 0, _oldFrame.origin.x, self.overlayView.height));
         CGPathAddRect(path, nil, CGRectMake(_oldFrame.origin.x + _oldFrame.size.width, 0, self.overlayView.width - _oldFrame.origin.x - _oldFrame.size.width, self.overlayView.height));

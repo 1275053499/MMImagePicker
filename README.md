@@ -6,15 +6,10 @@
 
 ![MMImagePicker](Screenshot.png)
 
-`MMImagePicker`基于`AssetsLibrary`框架的图片选择器：支持多选、单选、对图片进行裁剪、选择原图、可预览。若想使用基于`Photos`框架的图片选择器，点击[这里](https://github.com/CheeryLau/MMPhotoPicker)。
+`MMImagePicker`基于`AssetsLibrary`框架的图片选择器：支持多选、单选、对图片进行裁剪、选择原图、可预览。若想使用基于`Photos`框架的图片选择器，可选择[MMPhotoPicker](https://github.com/CheeryLau/MMPhotoPicker)。
 
 
-
-## 使用
-
-1. `pod "MMImagePicker"` ;
-2. `pod install` / `pod update`;
-3. `#import <MMImagePicker/MMImagePickerController.h>`.
+## 属性
 
 ```objc
 MMImagePickerController属性介绍：
@@ -37,8 +32,33 @@ MMImagePickerController属性介绍：
 @property (nonatomic, assign) id<MMImagePickerDelegate> delegate;
 ```
 
+## 代理
+
+```objc
+@protocol MMImagePickerDelegate <NSObject>
+
+@optional
+/**
+ info释义:
+ 返回的媒体数据是数组，数组单元为字典，字典中包含以下数据：
+ 
+ 资源类型 ALAssetPropertyType
+ 位置方向 ALAssetPropertyLocation
+ 原始图片 UIImagePickerControllerOriginalImage
+ 原件路径 UIImagePickerControllerReferenceURL
+ 
+ */
+- (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray<NSDictionary *> *)info;
+- (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker;
+
+@end
+```
   
-## 示例
+## 使用
+
+1. `pod "MMImagePicker"` ;
+2. `pod install` / `pod update`;
+3. `#import <MMImagePicker/MMImagePickerController.h>`.
 
 ```objc
 MMImagePickerController *mmVC = [[MMImagePickerController alloc] init];
@@ -51,6 +71,7 @@ mmVC.showOriginImageOption = YES;
 UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
 [self.navigationController presentViewController:mmNav animated:YES completion:nil];
 ```
+
 ```objc
 #pragma mark - MMImagePickerDelegate
 - (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
@@ -69,7 +90,7 @@ UINavigationController *mmNav = [[UINavigationController alloc] initWithRootView
 1. 需要在Info.plist中添加隐私授权：`Privacy - Photo Library Usage Description`；
 2. 如果相册名称需要根据手机语言环境显示相应语言，需要在Info.plist中设置`Localized resources can be mixed` 为 `YES`。
 
-## END
+## 后记
 
 如有问题，欢迎给我[留言](https://github.com/CheeryLau/MMImagePicker/issues)，如果这个工具对你有些帮助，请给我一个star、watch。O(∩_∩)O谢谢
 

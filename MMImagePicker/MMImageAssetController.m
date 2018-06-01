@@ -10,16 +10,9 @@
 #import "MMImagePreviewController.h"
 #import "MMImageCropController.h"
 #import "MMImagePickerConst.h"
-#import "MMAssetCell.h"
 
-//#### MMALAsset
-@implementation MMALAsset
-
-@end
-
-//#### MMImageAssetController
-static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
-
+#pragma mark - ################## MMImageAssetController
+static NSString *const CellIdentifier = @"MMAssetCell";
 @interface MMImageAssetController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) ALAssetsLibrary *library;
@@ -68,16 +61,11 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     [self.view addSubview:self.collectionView];
     if (!_cropImageOption && !_singleImageOption) {
         self.collectionView.height = self.view.height-kTopBarHeight-kBottomHeight;
+        // 是否显示原图选项
+        _originBtn.hidden = !self.showOriginImageOption;
         [self.view addSubview:self.bottomView];
-    } else {
-        if (kDeviceIsIphoneX) {
-            _collectionView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
-            _collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0f, 0.0f, 30.0f, 0.0f);
-        }
     }
     [self getPhotoAlbum];
-    // 是否显示原图选项
-    _originBtn.hidden = !self.showOriginImageOption;
 }
 
 #pragma mark - 获取照片刷新瀑布流
@@ -88,7 +76,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     __weak typeof(self) weakSelf = self;
     [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
      {
-         if (!result) {  //为空时，枚举完成
+         if (!result) {  // 为空时，枚举完成
              [weakSelf.collectionView reloadData];
              return;
          }
@@ -125,7 +113,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         _bottomView.userInteractionEnabled = NO;
         _bottomView.alpha = 0.5;
         
-        CGFloat btHeight = 44.0f;
+        CGFloat btHeight = 50;
         // 上边框
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(0, 0, _bottomView.width, 0.5);
@@ -148,7 +136,6 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
         [_originBtn setTitle:@"原图" forState:UIControlStateNormal];
         [_originBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_originBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
-        [_originBtn setImageEdgeInsets:UIEdgeInsetsMake(12, 0, 12, 70)];
         [_originBtn setImage:[UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_mark")] forState:UIControlStateNormal];
         [_originBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [_originBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -311,7 +298,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MMALAsset *mmAsset = [self.mmAssetArray objectAtIndex:indexPath.row];
-    //## 赋值
+    // 赋值
     MMAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.image = [UIImage imageWithCGImage:mmAsset.asset.thumbnail];
     cell.selected = mmAsset.isSelected;
@@ -324,10 +311,10 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     MMALAsset *mmAsset = [self.mmAssetArray objectAtIndex:indexPath.row];
     ALAsset *asset = mmAsset.asset;
-    //## 图片裁剪
+    // 图片裁剪
     if (_cropImageOption)
     {
-        //获取图片
+        // 获取图片
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
         CGImageRef imgRef = [assetRep fullScreenImage];
         UIImageOrientation orientation = UIImageOrientationUp;
@@ -343,7 +330,7 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
                 NSLog(@"警告:未设置回传!!!");
                 return;
             }
-            //封装
+            // 封装
             NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
             CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
             if (location) {
@@ -355,21 +342,21 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
             }
             [dictionary setObject:cropImage forKey:UIImagePickerControllerOriginalImage];
             [dictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
-            //回传
+            // 回传
             weakSelf.completion(@[dictionary], _isOrigin, NO);
         }];
         [self.navigationController pushViewController:controller animated:YES];
         return;
     }
     
-    //## 选择一个>>直接返回
+    // 选择一个>>直接返回
     if (_singleImageOption)
     {
         if (!self.completion) {
             NSLog(@"警告:未设置回传!!!");
             return;
         }
-        //封装
+        // 封装
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
         CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
         if (location) {
@@ -387,12 +374,12 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
             [dictionary setObject:image forKey:UIImagePickerControllerOriginalImage];
             [dictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
         }
-        //回传
+        // 回传
         self.completion(@[dictionary], _isOrigin, NO);
         return;
     }
     
-    //## 提醒
+    // 提醒
     if (([self.selectedAssetArray count] == _maximumNumberOfImage) && !mmAsset.isSelected) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"最多可以添加%ld张图片",(long)_maximumNumberOfImage]
                                                         message:nil
@@ -418,6 +405,69 @@ static NSString *const CellIdentifier = @"MMPhotoAlbumCell";
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+@end
+
+
+#pragma mark - ################## MMALAsset
+@implementation MMALAsset
+
+@end
+
+
+#pragma mark - ################## MMAssetCell
+@interface MMAssetCell ()
+
+@property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,strong) UIImageView *overLay;
+
+@end
+
+@implementation MMAssetCell
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addSubview:self.imageView];
+        [self addSubview:self.overLay];
+        self.overLay.hidden = YES;
+    }
+    return self;
+}
+
+#pragma mark - getter
+- (UIImageView *)imageView
+{
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _imageView.layer.masksToBounds = YES;
+        _imageView.clipsToBounds = YES;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.contentScaleFactor = [[UIScreen mainScreen] scale];
+    }
+    return _imageView;
+}
+
+- (UIImageView *)overLay
+{
+    if (!_overLay) {
+        _overLay = [[UIImageView alloc] initWithFrame:self.bounds];
+        _overLay.image = [UIImage imageNamed:MMImagePickerSrcName(@"mmphoto_overlay")];
+    }
+    return _overLay;
+}
+
+#pragma mark - setter
+- (void)setSelected:(BOOL)selected
+{
+    self.overLay.hidden = !selected;
+}
+
+- (void)setImage:(UIImage *)image
+{
+    self.imageView.image = image;
 }
 
 @end

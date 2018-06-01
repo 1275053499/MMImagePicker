@@ -11,6 +11,7 @@
 #import "MMImageCropController.h"
 #import "MMImagePickerConst.h"
 
+#pragma mark - ################## MMImagePickerController
 @protocol MMImagePickerDelegate;
 @interface MMImagePickerController : UIViewController
 
@@ -36,7 +37,22 @@
 @protocol MMImagePickerDelegate <NSObject>
 
 @optional
-- (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
+/**
+ info释义:
+ 返回的媒体数据是数组，数组单元为字典，字典中包含以下数据：
+ 
+ 资源类型 ALAssetPropertyType
+ 位置方向 ALAssetPropertyLocation
+ 原始图片 UIImagePickerControllerOriginalImage
+ 原件路径 UIImagePickerControllerReferenceURL
+ 
+ */
+- (void)mmImagePickerController:(MMImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray<NSDictionary *> *)info;
 - (void)mmImagePickerControllerDidCancel:(MMImagePickerController *)picker;
+
+@end
+
+#pragma mark - ################## MMAlbumCell
+@interface MMAlbumCell : UITableViewCell
 
 @end

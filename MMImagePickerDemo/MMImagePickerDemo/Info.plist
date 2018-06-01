@@ -31,7 +31,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>请开启照片权限</string>
+	<string>请开启相册权限</string>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
 </dict>
