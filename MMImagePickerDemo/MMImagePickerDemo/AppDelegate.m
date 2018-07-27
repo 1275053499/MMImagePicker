@@ -21,6 +21,7 @@
     ViewController *mmVC = [[ViewController alloc] init];
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
+    mmNav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:19.0]};
     mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

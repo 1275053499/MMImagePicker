@@ -60,12 +60,8 @@
     }
     [self.view addSubview:_scrollView];
     
-    CGFloat top = 20;
-    CGFloat topH = 64;
-    if (kDeviceIsIphoneX) {
-        top = kStatusHeight;
-        topH = kTopBarHeight;
-    }
+    CGFloat top = kStatusHeight;
+    CGFloat topH = kTopBarHeight;
     _titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, topH)];
     _titleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     [self.view addSubview:_titleView];
@@ -113,20 +109,18 @@
     } else {
         zoomScale = scrollView.maximumZoomScale;
     }
-    [UIView animateWithDuration:0.35
-                     animations:^{
-                         scrollView.zoomScale = zoomScale;
-                     }];
+    [UIView animateWithDuration:0.35 animations:^{
+        scrollView.zoomScale = zoomScale;
+    }];
 }
 
 - (void)singleTapGestureCallback:(UITapGestureRecognizer *)gesture
 {
     _isHidden = !_isHidden;
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         weakSelf.titleView.hidden = weakSelf.isHidden;
-                     }];
+    [UIView animateWithDuration:0.5 animations:^{
+        weakSelf.titleView.hidden = weakSelf.isHidden;
+    }];
 }
 
 #pragma mark - 时间处理
@@ -137,28 +131,27 @@
 
 - (void)deleteAction
 {
-    //1.移除重新加载
+    // 移除视图
     ALAsset *asset = [self.assetArray objectAtIndex:_index];
+    [self deleteImage];
     [self.assetArray removeObjectAtIndex:_index];
-    [self loadImage];
-    //2.更新索引
+    // 更新索引
     CGFloat pageWidth = _scrollView.frame.size.width;
     _index = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     _titleLab.text = [NSString stringWithFormat:@"%ld/%ld",(long)_index+1,(long)[self.assetArray count]];
-    //3.block
+    // block
     if (self.photoDeleteBlock) {
         self.photoDeleteBlock(asset);
     }
-    //4.返回
+    // 返回
     if (![self.assetArray count]) {
         [self backAction];
     }
 }
 
+#pragma mark - 图像加载|移除
 - (void)loadImage
 {
-    // 移除
-    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     // 重新添加
     NSInteger count = [self.assetArray count];
     for (int i = 0; i < count; i ++)
@@ -175,7 +168,7 @@
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.contentScaleFactor = [[UIScreen mainScreen] scale];
         imageView.backgroundColor = [UIColor clearColor];
-        
+        // 用于图片的捏合缩放
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_scrollView.width * i, 0, _scrollView.width, _scrollView.height)];
         scrollView.contentSize = CGSizeMake(scrollView.width, scrollView.height);
         scrollView.minimumZoomScale = 1.0;
@@ -203,6 +196,40 @@
     [_scrollView setContentSize:CGSizeMake(_scrollView.width * count, _scrollView.height)];
 }
 
+- (void)deleteImage
+{
+    // 移除当前视图
+    NSInteger tag = 100 + _index;
+    UIScrollView *scrollView = [_scrollView viewWithTag:tag];
+    [scrollView removeFromSuperview];
+    // 更新后面视图的Frame和TAG(箭头内的执行过程)
+    // ↓↓↓
+    NSInteger count = [self.assetArray count];
+    UIScrollView *sv = nil;
+    // 记录上一个的信息
+    CGRect setRect = scrollView.frame;
+    NSInteger setTag = tag;
+    // 临时数据存储变量
+    CGRect tempRect;
+    NSInteger tempTag;
+    for (NSInteger i = 1; i < count-_index; i ++) {
+        tag ++;
+        sv = [_scrollView viewWithTag:tag];
+        // 临时存储
+        tempRect = sv.frame;
+        tempTag = sv.tag;
+        // 将上一个数据赋值给sv
+        sv.frame = setRect;
+        sv.tag = setTag;
+        // 将临时存储赋值
+        setRect = tempRect;
+        setTag = tempTag;
+    }
+    // ↑↑↑
+    // 更新主滚动视图
+    [_scrollView setContentSize:CGSizeMake(_scrollView.width * (count-1), _scrollView.height)];
+}
+
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
@@ -214,12 +241,6 @@
     CGFloat pageWidth = _scrollView.frame.size.width;
     _index = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     _titleLab.text = [NSString stringWithFormat:@"%ld/%ld",(long)_index+1,(long)[self.assetArray count]];
-}
-
-#pragma mark - 隐藏状态栏
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
 }
 
 #pragma mark -

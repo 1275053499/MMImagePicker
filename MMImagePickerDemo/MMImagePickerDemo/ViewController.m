@@ -46,6 +46,7 @@ static NSString *const CellIdentifier = @"PhotoCell";
 //    mmVC.singleImageOption = YES;
     UINavigationController *mmNav = [[UINavigationController alloc] initWithRootViewController:mmVC];
     [mmNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_bar"] forBarMetrics:UIBarMetricsDefault];
+    mmNav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:19.0]};
     mmNav.navigationBar.barStyle = UIBarStyleBlackOpaque;
     mmNav.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController presentViewController:mmNav animated:YES completion:nil];
